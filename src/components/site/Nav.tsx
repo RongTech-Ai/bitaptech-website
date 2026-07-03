@@ -1,5 +1,10 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
 
 const links = [
@@ -13,28 +18,20 @@ const links = [
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(false);
+  const pathname = usePathname();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = stored ? stored === "dark" : prefers;
-    setDark(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
-
   const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -44,48 +41,59 @@ export function Nav() {
       }`}
     >
       <div
-        className={`mx-auto max-w-6xl px-4 sm:px-6 transition-all duration-300 ${
-          scrolled ? "glass-strong rounded-2xl mx-3 sm:mx-6" : ""
+        className={`mx-auto transition-all duration-300 px-4 sm:px-6 ${
+          scrolled
+            ? "glass-strong rounded-2xl shadow-md border border-white/10 dark:border-white/5 w-full max-w-[calc(100%-2rem)] md:max-w-6xl"
+            : "w-full max-w-6xl"
         }`}
       >
         <div className="flex items-center justify-between h-14">
-          <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
-            <span className="grid place-items-center h-8 w-8 rounded-lg bg-gradient-primary text-white shadow-glow">
-              <Sparkles className="h-4 w-4" />
-            </span>
-            <span>BitapTech</span>
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/assets/logo-horizontal.jpg"
+              alt="BitapTech Logo"
+              width={160}
+              height={36}
+              priority
+              className="h-9 w-auto rounded-lg mix-blend-multiply dark:invert dark:mix-blend-screen"
+            />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-md"
-                activeProps={{ className: "px-3 py-2 text-sm text-foreground font-medium rounded-md" }}
-                activeOptions={{ exact: true }}
-              >
-                {l.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-1.5 bg-secondary/20 dark:bg-white/5 p-1 rounded-xl border border-border/30">
+            {links.map((l) => {
+              const active = pathname === l.to;
+              return (
+                <Link
+                  key={l.to}
+                  href={l.to}
+                  className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-all duration-300 ${
+                    active
+                      ? "bg-background text-foreground shadow-sm border border-border/40"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/40 dark:hover:bg-white/5"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="h-9 w-9 grid place-items-center rounded-lg hover:bg-accent transition-colors"
+              className="h-10 w-10 grid place-items-center rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 border border-transparent hover:border-border/30 transition-all duration-300"
             >
-              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              {mounted && (resolvedTheme === "dark" ? <Sun className="h-4.5 w-4.5 text-amber-400" /> : <Moon className="h-4.5 w-4.5 text-slate-700" />)}
             </button>
             <Link
-              to="/contact"
-              className="hidden md:inline-flex items-center h-9 px-4 rounded-lg bg-gradient-primary text-white text-sm font-medium shadow-glow hover:opacity-95 transition"
+              href="/contact"
+              className="hidden md:inline-flex items-center h-10 px-5 rounded-xl bg-gradient-primary text-white text-sm font-semibold shadow-glow hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               Get in touch
             </Link>
             <button
-              className="md:hidden h-9 w-9 grid place-items-center rounded-lg hover:bg-accent"
+              className="md:hidden h-10 w-10 grid place-items-center rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 border border-transparent hover:border-border/30 transition-colors"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -95,19 +103,31 @@ export function Nav() {
         </div>
 
         {open && (
-          <div className="md:hidden pb-4 pt-2 flex flex-col gap-1">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className="px-3 py-2 text-sm text-muted-foreground hover:text-foreground rounded-md"
-                activeProps={{ className: "px-3 py-2 text-sm text-foreground font-medium bg-accent rounded-md" }}
-                activeOptions={{ exact: true }}
-              >
-                {l.label}
-              </Link>
-            ))}
+          <div className="md:hidden pb-5 pt-3 flex flex-col gap-1 border-t border-border/20 mt-2 animate-fade-in">
+            {links.map((l) => {
+              const active = pathname === l.to;
+              return (
+                <Link
+                  key={l.to}
+                  href={l.to}
+                  onClick={() => setOpen(false)}
+                  className={`px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300 ${
+                    active
+                      ? "bg-gradient-primary text-white shadow-glow"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/40 dark:hover:bg-white/5"
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
+            <Link
+              href="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-secondary dark:bg-white/5 border border-border/40 text-sm font-semibold hover:bg-secondary/80 transition-all duration-200"
+            >
+              Get in touch
+            </Link>
           </div>
         )}
       </div>
