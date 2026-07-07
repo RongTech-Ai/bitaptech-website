@@ -58,6 +58,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li><Link href="/privacy" className="hover:text-foreground transition-colors duration-200">Privacy Policy</Link></li>
             <li><Link href="/terms" className="hover:text-foreground transition-colors duration-200">Terms of Service</Link></li>
+            <li><Link href="/refund" className="hover:text-foreground transition-colors duration-200">Refund Policy</Link></li>
             <li>
               <a href="mailto:info@bitaptech.com" className="hover:text-foreground transition-colors duration-200">
                 info@bitaptech.com
