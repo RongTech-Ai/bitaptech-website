@@ -6,10 +6,13 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure we can build without typescript errors blocking deployment if any minor lint occurs
+  // Type errors are real bugs — let them fail the build.
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
+  // ESLint here is configured with prettier/formatting rules that are noisy at
+  // build time; linting still runs via `bun run lint`. Keep it out of the build
+  // gate so formatting nits don't block a deploy, but never TypeScript errors.
   eslint: {
     ignoreDuringBuilds: true,
   },

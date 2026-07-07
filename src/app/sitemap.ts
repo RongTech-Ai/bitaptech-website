@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://bitaptech.com";
+  const baseUrl = SITE_URL;
   const routes = ["", "/products", "/services", "/about", "/contact", "/privacy", "/terms", "/refund"];
 
   return routes.map((route) => ({

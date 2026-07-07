@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://bitaptech.com/sitemap.xml
+Host: https://bitaptech.com

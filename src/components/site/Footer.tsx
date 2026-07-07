@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Linkedin, Sparkles } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -23,22 +24,20 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-3.5 mt-6">
             <a
-              href="https://linkedin.com"
+              href={SITE.sameAs[0]}
               target="_blank"
               rel="noreferrer noopener"
-              aria-label="LinkedIn"
+              aria-label="BitapTech on LinkedIn"
               className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
             >
               <Linkedin className="h-4.5 w-4.5" />
             </a>
             <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="GitHub"
+              href={`mailto:${SITE.email}`}
+              aria-label="Email BitapTech"
               className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
             >
-              <Github className="h-4.5 w-4.5" />
+              <Mail className="h-4.5 w-4.5" />
             </a>
           </div>
         </div>

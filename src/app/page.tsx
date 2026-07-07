@@ -324,10 +324,12 @@ export default function HomePage() {
             <div aria-hidden className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/10 blur-3xl" />
             <div className="relative max-w-2xl">
               <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-                Let's build something amazing together.
+                Have a product in mind? Let&apos;s ship it.
               </h2>
               <p className="mt-5 text-white/85 text-base sm:text-lg leading-relaxed">
-                Tell us about your project — we'll help design, engineer and scale it with premium performance and aesthetics.
+                From first wireframe to production scale — we design, build and run AI
+                products and automation platforms. Tell us where you are and we&apos;ll map
+                the fastest path to launch.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
