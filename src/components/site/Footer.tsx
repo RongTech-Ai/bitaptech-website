@@ -1,28 +1,34 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, ShieldCheck } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 mt-32 relative overflow-hidden bg-background">
+    <footer className="border-t border-border/40 mt-10 relative overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
       
-      <div className="mx-auto max-w-6xl px-6 py-16 grid gap-10 md:grid-cols-4 relative z-10">
+      <div className="mx-auto max-w-6xl px-6 pt-10 pb-8 grid gap-10 md:grid-cols-4 relative z-10">
         <div className="md:col-span-2">
           <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/assets/logo-horizontal.jpg"
-              alt="BitapTech Logo"
-              width={140}
-              height={32}
-              className="h-8 w-auto rounded-lg mix-blend-multiply dark:invert dark:mix-blend-screen"
-            />
+            <div className="bg-white border border-border/70 shadow-sm rounded-xl flex items-center justify-center h-11 w-44 overflow-hidden relative hover:border-primary/20 transition-colors">
+              <Image
+                src="/assets/logo-horizontal.jpg"
+                alt="BitapTech Logo"
+                width={240}
+                height={54}
+                className="absolute inset-0 h-full w-full object-contain scale-[1.6] mix-blend-multiply"
+              />
+            </div>
           </Link>
           <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
-            Building the Future with AI. We craft high-performance SaaS products and intelligent business automation platforms for modern enterprises.
+            Building the Future of Conversations. We craft high-performance SaaS messaging platforms and enterprise integrations for modern businesses.
           </p>
-          <div className="flex items-center gap-3.5 mt-6">
+          <div className="flex items-center gap-3 mt-6 text-[11px] text-muted-foreground border-t border-border/20 pt-4 max-w-sm">
+            <ShieldCheck className="h-4.5 w-4.5 text-emerald-500 shrink-0" />
+            <span>GDPR Aligned Data Privacy & Secure SSL Endpoints</span>
+          </div>
+          <div className="flex items-center gap-3.5 mt-4">
             <a
               href={SITE.sameAs[0]}
               target="_blank"
@@ -43,12 +49,12 @@ export function Footer() {
         </div>
 
         <div>
-          <div className="text-sm font-semibold mb-4 tracking-tight">Quick Links</div>
+          <div className="text-sm font-semibold mb-4 tracking-tight">Our Products</div>
           <ul className="space-y-3 text-sm text-muted-foreground">
-            <li><Link href="/" className="hover:text-foreground transition-colors duration-200">Home</Link></li>
-            <li><Link href="/products" className="hover:text-foreground transition-colors duration-200">Products</Link></li>
-            <li><Link href="/about" className="hover:text-foreground transition-colors duration-200">About</Link></li>
-            <li><Link href="/contact" className="hover:text-foreground transition-colors duration-200">Contact</Link></li>
+            <li><Link href="/products#cloud-api" className="hover:text-foreground transition-colors duration-200">WpAI Cloud API (Official)</Link></li>
+            <li><Link href="/products#web-session" className="hover:text-foreground transition-colors duration-200">WpAI Web Session Connect</Link></li>
+            <li><Link href="/products#omnichannel" className="hover:text-foreground transition-colors duration-200">Omnichannel Suite (Beta)</Link></li>
+            <li><Link href="/services" className="hover:text-foreground transition-colors duration-200">Bespoke Engineering</Link></li>
           </ul>
         </div>
 
@@ -67,13 +73,9 @@ export function Footer() {
         </div>
       </div>
       
-      <div className="border-t border-border/40 bg-secondary/10 dark:bg-white/5 relative z-10">
-        <div className="mx-auto max-w-6xl px-6 py-6 text-xs text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>© {new Date().getFullYear()} BitapTech. All Rights Reserved.</div>
-          <div className="flex items-center gap-1.5 font-medium">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            MSME Registered Software Company
-          </div>
+      <div className="border-t border-border/40 relative z-10 text-xs text-muted-foreground py-4">
+        <div className="mx-auto max-w-6xl px-6 flex items-center justify-between">
+          <p>© {new Date().getFullYear()} BitapTech. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
