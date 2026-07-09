@@ -216,23 +216,38 @@ export default function HomePage() {
               <div className="absolute rounded-full border border-primary/5 w-[55%] h-[55%]" />
 
               {/* Central Circle Hub */}
-              <div className="absolute w-[140px] h-[140px] md:w-[160px] md:h-[160px] rounded-full bg-white dark:bg-zinc-950 border border-border/80 flex flex-col items-center justify-center p-3 text-center shadow-lg shadow-black/5 z-20">
-                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 shadow-inner">
-                  <Users className="h-4 w-4" />
+              <div className="absolute w-[150px] h-[150px] md:w-[170px] md:h-[170px] rounded-full bg-white dark:bg-zinc-950 border border-border/80 flex flex-col items-center justify-center p-3 text-center shadow-lg shadow-black/5 z-20">
+                <div className="h-10 w-10 rounded-full bg-[#4f46e5] flex items-center justify-center text-white mb-2.5 shadow-md">
+                  <Users className="h-5 w-5" />
                 </div>
-                <div className="text-[10px] font-bold text-foreground font-display tracking-tight leading-snug">
-                  Unified Platform <br />
-                  <span className="text-indigo-600 dark:text-indigo-400 font-semibold text-[8px]">(Our MOAT)</span>
+                <div className="text-[11px] md:text-xs font-extrabold text-foreground font-display tracking-tight leading-tight">
+                  Hyper <br />
+                  Personalization
+                </div>
+                <div className="text-[#4f46e5] dark:text-[#818cf8] font-bold text-[9px] mt-1">
+                  (Our MOAT)
                 </div>
               </div>
 
+              {/* ORBITAL DOTS */}
+              {/* Inner ring green dot (top) */}
+              <div className="absolute top-[22.5%] left-1/2 -translate-x-1/2 h-2.5 w-2.5 rounded-full bg-emerald-500 z-10 border border-white dark:border-zinc-950 shadow-sm" />
+              {/* Inner ring blue dot (left) */}
+              <div className="absolute top-[41%] left-[29%] h-2.5 w-2.5 rounded-full bg-emerald-400 z-10 border border-white dark:border-zinc-950 shadow-sm" />
+              {/* Inner ring violet dot (right) */}
+              <div className="absolute top-[41%] right-[29%] h-2.5 w-2.5 rounded-full bg-indigo-500 z-10 border border-white dark:border-zinc-950 shadow-sm" />
+              {/* Inner ring bottom dot */}
+              <div className="absolute bottom-[22.5%] left-1/2 -translate-x-1/2 h-2.5 w-2.5 rounded-full bg-indigo-400 z-10 border border-white dark:border-zinc-950 shadow-sm" />
+              {/* Middle ring purple dot (right) */}
+              <div className="absolute top-1/2 -translate-y-1/2 right-[12.5%] h-2.5 w-2.5 rounded-full bg-indigo-600 z-10 border border-white dark:border-zinc-950 shadow-sm" />
+
               {/* FLOATING ORBITAL NODES */}
 
-              {/* 1. WhatsApp Cloud API (top-right) */}
+              {/* 1. WhatsApp Cloud API (top) */}
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[2%] right-[14%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-[#25D366]/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-[#25D366]/50 transition-all duration-300"
+                className="absolute top-[2%] left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-[#25D366]/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-[#25D366]/50 transition-all duration-300"
               >
                 <div className="relative h-7 w-7 rounded-lg bg-[#25D366]/10 flex items-center justify-center text-[#25D366] shrink-0">
                   <span className="absolute -inset-0.5 rounded-lg bg-[#25D366] opacity-10 animate-ping" />
@@ -248,11 +263,11 @@ export default function HomePage() {
               <motion.div
                 animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-[32%] right-[-10%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-indigo-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-indigo-500/50 transition-all duration-300"
+                className="absolute top-[34%] right-[-6%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-indigo-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-indigo-500/50 transition-all duration-300"
               >
                 <div className="relative h-7 w-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
                   <span className="absolute -inset-0.5 rounded-lg bg-indigo-500 opacity-10 animate-ping" />
-                  <Send className="h-3.5 w-3.5" />
+                  <MessageSquare className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
                   <div className="text-[10px] font-bold text-foreground leading-none">SMS</div>
@@ -260,63 +275,63 @@ export default function HomePage() {
                 </div>
               </motion.div>
 
-              {/* 3. AI-Driven Insights (bottom-right) */}
+              {/* 3. AI-Driven Insights & Predictions (bottom-right) */}
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-[18%] right-[-4%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-pink-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-pink-500/50 transition-all duration-300"
+                className="absolute bottom-[20%] right-[-4%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-pink-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-pink-500/50 transition-all duration-300"
               >
                 <div className="relative h-7 w-7 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-600 dark:text-pink-400 shrink-0">
                   <Brain className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">AI Insights</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Predictions</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">AI-Driven Insights</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">& Predictions</p>
                 </div>
               </motion.div>
 
-              {/* 4. Web Session Connect (bottom / bottom-right) */}
+              {/* 4. Email Engagement (bottom center-right) */}
               <motion.div
                 animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-[2%] right-[16%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-emerald-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-emerald-500/50 transition-all duration-300"
+                className="absolute bottom-[4%] right-[16%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-orange-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-orange-500/50 transition-all duration-300"
               >
-                <div className="relative h-7 w-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
-                  <Zap className="h-3.5 w-3.5" />
+                <div className="relative h-7 w-7 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-600 dark:text-orange-400 shrink-0">
+                  <Mail className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">Web Session</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Scan & Pair Connect</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">Email</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Engagement</p>
                 </div>
               </motion.div>
 
-              {/* 5. AI Automation & Chatbots (bottom-left) */}
+              {/* 5. AI Automation & Chatbots (bottom center-left) */}
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute bottom-[6%] left-[10%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-primary/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-primary/50 transition-all duration-300"
+                className="absolute bottom-[4%] left-[16%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-emerald-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-emerald-500/50 transition-all duration-300"
               >
-                <div className="relative h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold shrink-0">
+                <div className="relative h-7 w-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <Bot className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
                   <div className="text-[10px] font-bold text-foreground leading-none">AI Automation</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Chatbots</p>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">& Chatbots</p>
                 </div>
               </motion.div>
 
-              {/* 6. Unified CRM Integration (middle-left) */}
+              {/* 6. Unified Customer Intelligence (middle-left) */}
               <motion.div
                 animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-                className="absolute top-[50%] left-[-12%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-blue-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-blue-500/50 transition-all duration-300"
+                className="absolute top-[52%] left-[-10%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-blue-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-blue-500/50 transition-all duration-300"
               >
                 <div className="relative h-7 w-7 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                   <Database className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">Unified CRM</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Database Sync</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">Unified Customer</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Intelligence</p>
                 </div>
               </motion.div>
 
@@ -324,14 +339,14 @@ export default function HomePage() {
               <motion.div
                 animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-                className="absolute top-[15%] left-[0%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-sky-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-sky-500/50 transition-all duration-300"
+                className="absolute top-[22%] left-[4%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-sky-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-3 z-10 hover:scale-[1.03] hover:border-sky-500/50 transition-all duration-300"
               >
                 <div className="relative h-7 w-7 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
                   <MessageSquare className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">RCS Suite</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Verified Templates</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">RCS</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Messaging</p>
                 </div>
               </motion.div>
             </div>
