@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight, Bot, MessageSquare, Cloud, Zap, Cpu, Code2, Layers,
   ShieldCheck, CheckCircle2, Globe, Mail, Terminal, Users, Database, Sparkles, HelpCircle, ChevronDown,
-  Award, Rocket, Lock, BarChart3
+  Award, Rocket, Lock, BarChart3, Brain, Send, TrendingUp
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -108,183 +108,248 @@ export default function HomePage() {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:16px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
       {/* HERO SECTION */}
-      <section className="relative pt-6 pb-10 md:pt-10 md:pb-14">
+      <section className="relative pt-6 pb-14 md:pt-10 md:pb-20 overflow-hidden">
+        {/* Background gradient mesh */}
         <div className="absolute inset-0 bg-gradient-hero pointer-events-none" />
         <div
           aria-hidden="true"
-          className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full opacity-30 dark:opacity-20 blur-[130px] pointer-events-none"
+          className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full opacity-35 dark:opacity-20 blur-[130px] pointer-events-none"
           style={{ background: "conic-gradient(from 180deg at 50% 50%, oklch(0.48 0.22 280), oklch(0.58 0.23 275), oklch(0.72 0.16 160), oklch(0.48 0.22 280))" }}
         />
 
-        <div className="relative mx-auto max-w-7xl px-6 flex flex-col lg:flex-row items-center gap-12">
-          {/* Hero Copy */}
+        <div className="relative mx-auto max-w-7xl px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+          {/* Hero Copy (Left Column) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex-[1.1] max-w-2xl text-left"
           >
-            <span className="text-xs font-extrabold tracking-widest text-primary uppercase mb-4 block font-mono">
-              Powering Conversations. Building Connections.
+            {/* Top Badge */}
+            <span className="text-[11px] font-extrabold tracking-[0.2em] text-[#16a34a] dark:text-[#4ade80] uppercase mb-4 block font-mono animate-fade-in">
+              Official WhatsApp Business API & Omnichannel Gateway
             </span>
 
-            <h1 className="text-4xl sm:text-5xl md:text-[54px] font-extrabold leading-[1.1] tracking-tight text-foreground font-display">
-              AI-Powered Messaging <br />
-              <span className="text-gradient bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">for Modern Businesses</span>
+            {/* H1 Title */}
+            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-extrabold leading-[1.1] tracking-tight text-foreground font-display">
+              AI-Powered WhatsApp API <br />
+              <span className="text-gradient bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                & Omnichannel Messaging
+              </span>
             </h1>
 
-            <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Launch official WhatsApp Cloud campaigns, link scan-and-go Web Connect routes, deploy AI chat agents, and trigger enterprise SMS or RCS pipelines — all custom integrated for your software infrastructure.
+            {/* Subtitle description */}
+            <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
+              Launch official WhatsApp Cloud API, pair web sessions via QR scan, deploy smart AI chat agents, and trigger enterprise SMS/RCS pipelines — all from one unified, developer-friendly platform.
             </p>
 
+            {/* 3 Metrics Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-6 max-w-xl">
+              {/* Card 1 */}
+              <div className="bg-white/70 dark:bg-zinc-950/45 border border-border/50 rounded-2xl p-3.5 shadow-sm hover:border-primary/20 transition-all duration-300">
+                <div className="flex items-center gap-2">
+                  <div className="h-7 w-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
+                    <ShieldCheck className="h-4.5 w-4.5" />
+                  </div>
+                  <span className="text-lg font-extrabold text-foreground">99.9%</span>
+                </div>
+                <span className="text-[10px] text-muted-foreground leading-snug mt-1.5 block font-semibold">
+                  Uptime & delivery rate via operator routes¹
+                </span>
+              </div>
+
+              {/* Card 2 */}
+              <div className="bg-white/70 dark:bg-zinc-950/45 border border-border/50 rounded-2xl p-3.5 shadow-sm hover:border-primary/20 transition-all duration-300">
+                <div className="flex items-center gap-2">
+                  <div className="h-7 w-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                    <TrendingUp className="h-4.5 w-4.5" />
+                  </div>
+                  <span className="text-lg font-extrabold text-foreground">3.3x</span>
+                </div>
+                <span className="text-[10px] text-muted-foreground leading-snug mt-1.5 block font-semibold">
+                  Higher conversion with WhatsApp campaigns²
+                </span>
+              </div>
+
+              {/* Card 3 */}
+              <div className="bg-white/70 dark:bg-zinc-950/45 border border-border/50 rounded-2xl p-3.5 shadow-sm hover:border-primary/20 transition-all duration-300">
+                <div className="flex items-center gap-2">
+                  <div className="h-7 w-7 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                    <Zap className="h-4.5 w-4.5" />
+                  </div>
+                  <span className="text-lg font-extrabold text-foreground">$0</span>
+                </div>
+                <span className="text-[10px] text-muted-foreground leading-snug mt-1.5 block font-semibold">
+                  Meta convo fees via Web Session Connect³
+                </span>
+              </div>
+            </div>
+
             {/* CTAs */}
-            <div className="mt-6 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="mailto:info@bitaptech.com?subject=Book%20a%20Demo%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20custom%20demonstration%20of%20the%20platform%20for%20my%20business.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A%0ANotes%3A"
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-gradient-primary text-white font-semibold shadow-glow hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-[#4f46e5] text-white font-bold shadow-glow hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm cursor-pointer"
               >
                 Book a Demo <ArrowRight className="h-4 w-4" />
               </a>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-xl glass-strong border border-border/50 font-semibold hover:bg-secondary/60 dark:hover:bg-white/5 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border/85 bg-background/50 text-foreground font-semibold hover:bg-secondary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm"
               >
                 Explore Products
               </Link>
             </div>
-
-            {/* Features Row */}
-            <div className="mt-8 pt-6 border-t border-border/30 grid grid-cols-5 gap-2 text-center">
-              {[
-                { icon: Sparkles, text: "AI Automation" },
-                { icon: ShieldCheck, text: "Reliable Delivery" },
-                { icon: BarChart3, text: "Real-time Analytics" },
-                { icon: Code2, text: "Developer Friendly" },
-                { icon: Lock, text: "Secure & Compliant" }
-              ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center gap-1.5">
-                  <div className="h-8.5 w-8.5 rounded-lg bg-primary/5 border border-primary/10 flex items-center justify-center text-primary">
-                    <item.icon className="h-4 w-4" />
-                  </div>
-                  <span className="text-[9px] font-bold text-muted-foreground tracking-tight leading-tight max-w-[72px]">{item.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Sub-badge Pill */}
-            <div className="mt-6 inline-flex items-center gap-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold text-primary">
-              <Rocket className="h-4 w-4 text-primary animate-pulse" />
-              <span>One Platform. Every Channel. <span className="font-bold text-indigo-600">Endless Possibilities.</span></span>
-            </div>
           </motion.div>
 
-          {/* Interactive Orbital Globe Visual */}
+          {/* Interactive Ecosystem Orbital Diagram (Right Column) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="flex-1 w-full lg:max-w-[480px] relative"
+            className="flex-1 w-full lg:max-w-[480px] relative mt-8 lg:mt-0"
           >
             <div className="relative w-full aspect-square flex items-center justify-center overflow-visible">
               {/* Concentric Orbiting Rings */}
-              <div className="absolute rounded-full border border-dashed border-primary/20 w-[95%] h-[95%] animate-[spin_120s_linear_infinite]" />
-              <div className="absolute rounded-full border border-dashed border-indigo-500/15 w-[75%] h-[75%] animate-[spin_80s_linear_infinite_reverse]" />
-              <div className="absolute rounded-full border border-primary/10 w-[55%] h-[55%]" />
+              <div className="absolute rounded-full border border-dashed border-primary/10 w-[95%] h-[95%] animate-[spin_150s_linear_infinite]" />
+              <div className="absolute rounded-full border border-dashed border-indigo-500/15 w-[75%] h-[75%] animate-[spin_100s_linear_infinite_reverse]" />
+              <div className="absolute rounded-full border border-primary/5 w-[55%] h-[55%]" />
 
-              {/* Central Glowing Globe Visual */}
-              <div className="absolute w-[220px] h-[220px] md:w-[260px] md:h-[260px] rounded-full bg-gradient-to-tr from-primary/10 via-indigo-500/5 to-transparent flex items-center justify-center shadow-inner">
-                {/* Dotted Globe Grid */}
-                <div className="absolute inset-2 rounded-full border border-primary/20 opacity-40 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)] animate-pulse" />
-                
-                {/* Glowing Core */}
-                <div className="h-36 w-36 md:h-44 md:w-44 rounded-full bg-gradient-to-tr from-primary/20 to-indigo-500/20 blur-2xl pointer-events-none animate-pulse" />
-                
-                <Globe className="h-16 w-16 md:h-20 md:w-20 text-primary opacity-25 absolute animate-[spin_40s_linear_infinite]" />
+              {/* Central Circle Hub */}
+              <div className="absolute w-[140px] h-[140px] md:w-[160px] md:h-[160px] rounded-full bg-white dark:bg-zinc-950 border border-border/80 flex flex-col items-center justify-center p-3 text-center shadow-lg shadow-black/5 z-20">
+                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 shadow-inner">
+                  <Users className="h-4 w-4" />
+                </div>
+                <div className="text-[10px] font-bold text-foreground font-display tracking-tight leading-snug">
+                  Unified Platform <br />
+                  <span className="text-indigo-600 dark:text-indigo-400 font-semibold text-[8px]">(Our MOAT)</span>
+                </div>
               </div>
 
-              {/* FLOATING COMMUNICATION NODES */}
-              
-              {/* WhatsApp Cloud API */}
+              {/* FLOATING ORBITAL NODES */}
+
+              {/* 1. WhatsApp Cloud API (top-right) */}
               <motion.div
-                animate={{ y: [0, -6, 0] }}
+                animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[8%] right-[8%] flex items-center gap-3 bg-white border border-[#25D366]/30 shadow-md rounded-2xl p-2.5 px-4 z-10 hover:scale-[1.03] transition-transform duration-300"
+                className="absolute top-[2%] right-[14%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-[#25D366]/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-[#25D366]/50 transition-all duration-300"
               >
-                <div className="relative h-9.5 w-9.5 rounded-xl bg-[#25D366]/10 flex items-center justify-center text-[#25D366] font-bold">
-                  <span className="absolute -inset-0.5 rounded-xl bg-[#25D366] opacity-10 animate-ping" />
-                  <MessageSquare className="h-5 w-5" />
+                <div className="relative h-7 w-7 rounded-lg bg-[#25D366]/10 flex items-center justify-center text-[#25D366] shrink-0">
+                  <span className="absolute -inset-0.5 rounded-lg bg-[#25D366] opacity-10 animate-ping" />
+                  <MessageSquare className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-foreground">WhatsApp</div>
-                  <p className="text-[9px] text-muted-foreground font-semibold">Cloud API</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">WhatsApp</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Cloud API</p>
                 </div>
               </motion.div>
 
-              {/* SMS Campaigns */}
+              {/* 2. SMS Campaigns (middle-right) */}
               <motion.div
-                animate={{ y: [0, 6, 0] }}
+                animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-[35%] -right-[5%] flex items-center gap-3 bg-white border border-indigo-500/30 shadow-md rounded-2xl p-2.5 px-4 z-10 hover:scale-[1.03] transition-transform duration-300"
+                className="absolute top-[32%] right-[-10%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-indigo-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-indigo-500/50 transition-all duration-300"
               >
-                <div className="relative h-9.5 w-9.5 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 font-bold">
-                  <span className="absolute -inset-0.5 rounded-xl bg-indigo-500 opacity-10 animate-ping" />
-                  <MessageSquare className="h-5 w-5" />
+                <div className="relative h-7 w-7 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
+                  <span className="absolute -inset-0.5 rounded-lg bg-indigo-500 opacity-10 animate-ping" />
+                  <Send className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-foreground">SMS</div>
-                  <p className="text-[9px] text-muted-foreground font-semibold">Campaigns</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">SMS</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Campaigns</p>
                 </div>
               </motion.div>
 
-              {/* Email Engagement */}
+              {/* 3. AI-Driven Insights (bottom-right) */}
               <motion.div
-                animate={{ y: [0, -6, 0] }}
+                animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-[10%] right-[5%] flex items-center gap-3 bg-white border border-amber-500/30 shadow-md rounded-2xl p-2.5 px-4 z-10 hover:scale-[1.03] transition-transform duration-300"
+                className="absolute bottom-[18%] right-[-4%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-pink-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-pink-500/50 transition-all duration-300"
               >
-                <div className="relative h-9.5 w-9.5 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 font-bold">
-                  <span className="absolute -inset-0.5 rounded-xl bg-amber-500 opacity-10 animate-ping" />
-                  <Mail className="h-5 w-5" />
+                <div className="relative h-7 w-7 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-600 dark:text-pink-400 shrink-0">
+                  <Brain className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-foreground">Email</div>
-                  <p className="text-[9px] text-muted-foreground font-semibold">Engagement</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">AI Insights</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Predictions</p>
                 </div>
               </motion.div>
 
-              {/* AI Automation */}
+              {/* 4. Web Session Connect (bottom / bottom-right) */}
               <motion.div
-                animate={{ y: [0, 6, 0] }}
+                animate={{ y: [0, 4, 0] }}
                 transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute bottom-[5%] left-[8%] flex items-center gap-3 bg-white border border-primary/30 shadow-md rounded-2xl p-2.5 px-4 z-10 hover:scale-[1.03] transition-transform duration-300"
+                className="absolute bottom-[2%] right-[16%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-emerald-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-emerald-500/50 transition-all duration-300"
               >
-                <div className="relative h-9.5 w-9.5 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-bold">
-                  <span className="absolute -inset-0.5 rounded-xl bg-primary opacity-10 animate-ping" />
-                  <Bot className="h-5 w-5" />
+                <div className="relative h-7 w-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
+                  <Zap className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-foreground">AI Automation</div>
-                  <p className="text-[9px] text-muted-foreground font-semibold">& Chatbots</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">Web Session</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Scan & Pair Connect</p>
                 </div>
               </motion.div>
 
-              {/* RCS Messaging */}
+              {/* 5. AI Automation & Chatbots (bottom-left) */}
               <motion.div
-                animate={{ y: [0, -6, 0] }}
+                animate={{ y: [0, -4, 0] }}
                 transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute top-[28%] -left-[5%] flex items-center gap-3 bg-white border border-sky-500/30 shadow-md rounded-2xl p-2.5 px-4 z-10 hover:scale-[1.03] transition-transform duration-300"
+                className="absolute bottom-[6%] left-[10%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-primary/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-primary/50 transition-all duration-300"
               >
-                <div className="relative h-9.5 w-9.5 rounded-xl bg-sky-500/10 flex items-center justify-center text-sky-600 font-bold">
-                  <span className="absolute -inset-0.5 rounded-xl bg-sky-500 opacity-10 animate-ping" />
-                  <MessageSquare className="h-5 w-5" />
+                <div className="relative h-7 w-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold shrink-0">
+                  <Bot className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-foreground">RCS</div>
-                  <p className="text-[9px] text-muted-foreground font-semibold">Messaging</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">AI Automation</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Chatbots</p>
+                </div>
+              </motion.div>
+
+              {/* 6. Unified CRM Integration (middle-left) */}
+              <motion.div
+                animate={{ y: [0, 4, 0] }}
+                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+                className="absolute top-[50%] left-[-12%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-blue-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-blue-500/50 transition-all duration-300"
+              >
+                <div className="relative h-7 w-7 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
+                  <Database className="h-3.5 w-3.5" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-bold text-foreground leading-none">Unified CRM</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Database Sync</p>
+                </div>
+              </motion.div>
+
+              {/* 7. RCS Messaging (top-left) */}
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+                className="absolute top-[15%] left-[0%] flex items-center gap-2 bg-white/85 dark:bg-zinc-900/85 backdrop-blur-md border border-sky-500/20 shadow-md shadow-black/5 rounded-xl p-1.5 px-2.5 z-10 hover:scale-[1.03] hover:border-sky-500/50 transition-all duration-300"
+              >
+                <div className="relative h-7 w-7 rounded-lg bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
+                  <MessageSquare className="h-3.5 w-3.5" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[10px] font-bold text-foreground leading-none">RCS Suite</div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Verified Templates</p>
                 </div>
               </motion.div>
             </div>
+
+            {/* Bottom subtitle pill */}
+            <div className="mt-6 rounded-2xl border border-indigo-500/10 bg-indigo-50/10 dark:bg-indigo-950/5 p-4 text-center max-w-sm mx-auto shadow-sm">
+              <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                We unify conversational pathways, automate customer workflows, and deliver high-speed notifications that drive <span className="font-bold text-[#4f46e5] dark:text-[#818cf8]">engagement, loyalty, and business growth.</span>
+              </p>
+            </div>
           </motion.div>
+        </div>
+
+        {/* Sources footnote citation at bottom left */}
+        <div className="relative mx-auto max-w-7xl px-6 mt-12 text-left pointer-events-none">
+          <span className="text-[9px] text-muted-foreground/60 block font-mono">
+            Sources: ¹ Industry Benchmarks | ² Salesforce State of the Connected Customer | ³ BitapTech Web Session Flatrate Model
+          </span>
         </div>
       </section>
 
