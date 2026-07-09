@@ -1,12 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight, Bot, MessageSquare, Cloud, Zap, Cpu, Code2, Layers,
-  ShieldCheck, CheckCircle2, Globe, Mail, Terminal, Users, Database, Sparkles, HelpCircle, ChevronDown,
-  Award, Rocket, Lock, BarChart3, Brain, Send, TrendingUp
+  ArrowRight,
+  Bot,
+  MessageSquare,
+  Cloud,
+  Zap,
+  Cpu,
+  Code2,
+  Layers,
+  ShieldCheck,
+  CheckCircle2,
+  Globe,
+  Mail,
+  Terminal,
+  Users,
+  Database,
+  Sparkles,
+  HelpCircle,
+  ChevronDown,
+  Award,
+  Rocket,
+  Lock,
+  BarChart3,
+  Brain,
+  Send,
+  TrendingUp,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -21,7 +44,7 @@ const features = [
     title: "WpAI Official Cloud API",
     desc: "Built directly on Meta's official cloud endpoints. Requires template pre-approvals and business verification, but yields 100% official stability, high-speed broadcasts, and green checkmark eligibility.",
     badge: "Official Meta API",
-    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20"
+    badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
   },
   {
     id: "wp-web",
@@ -29,7 +52,7 @@ const features = [
     title: "WpAI Web Session Connect",
     desc: "Connect your existing WhatsApp number instantly via QR scan. Draft and dispatch arbitrary messages or custom media invoices immediately. Free sending with zero Meta conversation charges.",
     badge: "Scan & Connect",
-    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+    badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
   },
   {
     id: "rcs-rich",
@@ -37,7 +60,7 @@ const features = [
     title: "RCS Business Messaging",
     desc: "Send interactive visual carousels, verified business cards, and clickable action triggers direct to client native message inboxes. Achieves 3x higher click-through rates than classic text broadcasts.",
     badge: "RCS Suite",
-    badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
+    badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
   },
   {
     id: "otp-alert",
@@ -45,7 +68,7 @@ const features = [
     title: "Transactional OTP Gateway",
     desc: "Direct operator-connected SMS routes for time-critical transactional notifications. Achieves average OTP handset delivery rates in under 2.5 seconds with smart carrier failover fallbacks.",
     badge: "Low Latency SMS",
-    badgeColor: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20"
+    badgeColor: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
   },
   {
     id: "custom-software",
@@ -53,7 +76,7 @@ const features = [
     title: "Bespoke Enterprise Software",
     desc: "Complete internal workflow ecosystem design, centralized dashboards, and proprietary administrative panels custom engineered around your precise company operations.",
     badge: "Bespoke Dev",
-    badgeColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20"
+    badgeColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
   },
   {
     id: "middleware-api",
@@ -61,32 +84,37 @@ const features = [
     title: "Messaging Middleware & Syncs",
     desc: "Custom database connectors, webhook handlers, and middleware APIs linking our messaging channels directly with your legacy ERP systems (HubSpot, Zoho, SAP, Salesforce).",
     badge: "API Integration",
-    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20"
-  }
+    badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
+  },
 ];
 
 // FAQs Data
 const faqs = [
   {
     question: "What is the difference between WhatsApp Cloud API and Web Session Connect?",
-    answer: "WhatsApp Cloud API is Meta's official hosting service. It requires message templates to be pre-approved, charges conversation-based fees, and is highly stable for enterprise broadcasting. Web Session Connect acts as an automated handler on top of WhatsApp Web, requiring you to scan a QR code. It bypasses Meta template approval queues and is completely free of Meta messaging fees, but is dependent on your physical phone staying active and connected."
+    answer:
+      "WhatsApp Cloud API is Meta's official hosting service. It requires message templates to be pre-approved, charges conversation-based fees, and is highly stable for enterprise broadcasting. Web Session Connect acts as an automated handler on top of WhatsApp Web, requiring you to scan a QR code. It bypasses Meta template approval queues and is completely free of Meta messaging fees, but is dependent on your physical phone staying active and connected.",
   },
   {
     question: "Do I need Meta Business Verification to get started?",
-    answer: "For WpAI Cloud API, Meta Business Verification is highly recommended to unlock higher messaging limits, although you can start in sandbox tiers. For WpAI Web Session Connect, no verification or approval is required; you simply scan a QR code and start sending immediately."
+    answer:
+      "For WpAI Cloud API, Meta Business Verification is highly recommended to unlock higher messaging limits, although you can start in sandbox tiers. For WpAI Web Session Connect, no verification or approval is required; you simply scan a QR code and start sending immediately.",
   },
   {
     question: "How does the SMS and RCS failover configuration work?",
-    answer: "You can define smart fallback logic in your messaging triggers. If an internet-based notification (such as a WhatsApp template) fails to deliver within a specific time window, our platform automatically routes the notification as a verified RCS card, or falls back to direct operator carrier SMS to guarantee handset delivery."
+    answer:
+      "You can define smart fallback logic in your messaging triggers. If an internet-based notification (such as a WhatsApp template) fails to deliver within a specific time window, our platform automatically routes the notification as a verified RCS card, or falls back to direct operator carrier SMS to guarantee handset delivery.",
   },
   {
     question: "What are the costs associated with WhatsApp Cloud API?",
-    answer: "There are two pricing layers: Meta's official conversation charges (which vary depending on whether the conversation category is Utility, Marketing, Authentication, or Service) and our platform subscription fee. We maintain full pricing transparency with no hidden markups on Meta's official conversation rates."
+    answer:
+      "There are two pricing layers: Meta's official conversation charges (which vary depending on whether the conversation category is Utility, Marketing, Authentication, or Service) and our platform subscription fee. We maintain full pricing transparency with no hidden markups on Meta's official conversation rates.",
   },
   {
     question: "Can BitapTech customize integrations with our custom CRM or internal database?",
-    answer: "Yes. Beside our subscription SaaS, we operate a senior custom software division. We specialize in building secure webhook middleware, custom admin panels, and legacy ERP connectors to bridge our communication engine with your proprietary databases."
-  }
+    answer:
+      "Yes. Beside our subscription SaaS, we operate a senior custom software division. We specialize in building secure webhook middleware, custom admin panels, and legacy ERP connectors to bridge our communication engine with your proprietary databases.",
+  },
 ];
 
 export default function HomePage() {
@@ -94,9 +122,8 @@ export default function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Filter features
-  const filteredFeatures = activeTab === "all" 
-    ? features 
-    : features.filter(f => f.category === activeTab);
+  const filteredFeatures =
+    activeTab === "all" ? features : features.filter((f) => f.category === activeTab);
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -114,7 +141,10 @@ export default function HomePage() {
         <div
           aria-hidden="true"
           className="absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[900px] rounded-full opacity-35 dark:opacity-20 blur-[130px] pointer-events-none"
-          style={{ background: "conic-gradient(from 180deg at 50% 50%, oklch(0.48 0.22 280), oklch(0.58 0.23 275), oklch(0.72 0.16 160), oklch(0.48 0.22 280))" }}
+          style={{
+            background:
+              "conic-gradient(from 180deg at 50% 50%, oklch(0.48 0.22 280), oklch(0.58 0.23 275), oklch(0.72 0.16 160), oklch(0.48 0.22 280))",
+          }}
         />
 
         <div className="relative mx-auto max-w-7xl px-6 flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
@@ -140,7 +170,9 @@ export default function HomePage() {
 
             {/* Subtitle description */}
             <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
-              Launch official WhatsApp Cloud API, pair web sessions via QR scan, deploy smart AI chat agents, and trigger enterprise SMS/RCS pipelines — all from one unified, developer-friendly platform.
+              Launch official WhatsApp Cloud API, pair web sessions via QR scan, deploy smart AI
+              chat agents, and trigger enterprise SMS/RCS pipelines — all from one unified,
+              developer-friendly platform.
             </p>
 
             {/* 3 Metrics Cards */}
@@ -187,12 +219,12 @@ export default function HomePage() {
 
             {/* CTAs */}
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="mailto:info@bitaptech.com?subject=Book%20a%20Demo%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20custom%20demonstration%20of%20the%20platform%20for%20my%20business.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A%0ANotes%3A"
+              <Link
+                href="/book-demo"
                 className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-[#4f46e5] text-white font-bold shadow-glow hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm cursor-pointer"
               >
                 Book a Demo <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
               <Link
                 href="/products"
                 className="inline-flex items-center gap-2 h-11 px-5 rounded-full border border-border/85 bg-background/50 text-foreground font-semibold hover:bg-secondary/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm"
@@ -285,8 +317,12 @@ export default function HomePage() {
                   <Brain className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">AI-Driven Insights</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">& Predictions</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">
+                    AI-Driven Insights
+                  </div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">
+                    & Predictions
+                  </p>
                 </div>
               </motion.div>
 
@@ -301,7 +337,9 @@ export default function HomePage() {
                 </div>
                 <div className="text-left">
                   <div className="text-[10px] font-bold text-foreground leading-none">Email</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Engagement</p>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">
+                    Engagement
+                  </p>
                 </div>
               </motion.div>
 
@@ -315,8 +353,12 @@ export default function HomePage() {
                   <Bot className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">AI Automation</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">& Chatbots</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">
+                    AI Automation
+                  </div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">
+                    & Chatbots
+                  </p>
                 </div>
               </motion.div>
 
@@ -330,8 +372,12 @@ export default function HomePage() {
                   <Database className="h-3.5 w-3.5" />
                 </div>
                 <div className="text-left">
-                  <div className="text-[10px] font-bold text-foreground leading-none">Unified Customer</div>
-                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">Intelligence</p>
+                  <div className="text-[10px] font-bold text-foreground leading-none">
+                    Unified Customer
+                  </div>
+                  <p className="text-[8px] text-muted-foreground font-semibold mt-0.5">
+                    Intelligence
+                  </p>
                 </div>
               </motion.div>
 
@@ -354,7 +400,11 @@ export default function HomePage() {
             {/* Bottom subtitle pill */}
             <div className="mt-6 rounded-2xl border border-indigo-500/10 bg-indigo-50/10 dark:bg-indigo-950/5 p-4 text-center max-w-sm mx-auto shadow-sm">
               <p className="text-xs text-muted-foreground leading-relaxed font-medium">
-                We unify conversational pathways, automate customer workflows, and deliver high-speed notifications that drive <span className="font-bold text-[#4f46e5] dark:text-[#818cf8]">engagement, loyalty, and business growth.</span>
+                We unify conversational pathways, automate customer workflows, and deliver
+                high-speed notifications that drive{" "}
+                <span className="font-bold text-[#4f46e5] dark:text-[#818cf8]">
+                  engagement, loyalty, and business growth.
+                </span>
               </p>
             </div>
           </motion.div>
@@ -363,7 +413,8 @@ export default function HomePage() {
         {/* Sources footnote citation at bottom left */}
         <div className="relative mx-auto max-w-7xl px-6 mt-12 text-left pointer-events-none">
           <span className="text-[9px] text-muted-foreground/60 block font-mono">
-            Sources: ¹ Industry Benchmarks | ² Salesforce State of the Connected Customer | ³ BitapTech Web Session Flatrate Model
+            Sources: ¹ Industry Benchmarks | ² Salesforce State of the Connected Customer | ³
+            BitapTech Web Session Flatrate Model
           </span>
         </div>
       </section>
@@ -377,7 +428,9 @@ export default function HomePage() {
             </div>
             <div className="text-left">
               <div className="text-xs font-bold text-foreground">Enterprise Grade</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">Secure & Resilient Infrastructure</p>
+              <p className="text-[9px] text-muted-foreground font-semibold">
+                Secure & Resilient Infrastructure
+              </p>
             </div>
           </div>
           <div className="flex items-center justify-center gap-3 p-2 lg:border-r border-border/40 last:border-none">
@@ -386,7 +439,9 @@ export default function HomePage() {
             </div>
             <div className="text-left">
               <div className="text-xs font-bold text-foreground">High Performance</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">Low Latency Carrier Pipes</p>
+              <p className="text-[9px] text-muted-foreground font-semibold">
+                Low Latency Carrier Pipes
+              </p>
             </div>
           </div>
           <div className="flex items-center justify-center gap-3 p-2 lg:border-r border-border/40 last:border-none">
@@ -404,7 +459,9 @@ export default function HomePage() {
             </div>
             <div className="text-left">
               <div className="text-xs font-bold text-foreground">MSME Registered</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">Official Gov Recognition</p>
+              <p className="text-[9px] text-muted-foreground font-semibold">
+                Official Gov Recognition
+              </p>
             </div>
           </div>
         </div>
@@ -414,12 +471,15 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">Our Capabilities</div>
+            <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
+              Our Capabilities
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-foreground leading-tight">
               Explore messaging platforms & custom software.
             </h2>
             <p className="mt-3 text-muted-foreground text-sm">
-              Filter through our specialized messaging services, scan-to-connect nodes, and custom middleware structures.
+              Filter through our specialized messaging services, scan-to-connect nodes, and custom
+              middleware structures.
             </p>
           </div>
         </Reveal>
@@ -431,7 +491,7 @@ export default function HomePage() {
               all: "Show All",
               whatsapp: "Conversational (WhatsApp)",
               "sms-rcs": "Enterprise SMS & RCS",
-              "custom-dev": "Bespoke Software Services"
+              "custom-dev": "Bespoke Software Services",
             };
             return (
               <button
@@ -463,14 +523,21 @@ export default function HomePage() {
                 className="group relative rounded-2xl border border-border bg-card p-6 h-full flex flex-col justify-between hover:shadow-elegant hover:border-primary/20 transition-all duration-300"
               >
                 <div>
-                  <div className={`inline-flex self-start rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider mb-4 ${f.badgeColor}`}>
+                  <div
+                    className={`inline-flex self-start rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider mb-4 ${f.badgeColor}`}
+                  >
                     {f.badge}
                   </div>
-                  <h3 className="text-lg font-bold font-display text-foreground leading-snug">{f.title}</h3>
+                  <h3 className="text-lg font-bold font-display text-foreground leading-snug">
+                    {f.title}
+                  </h3>
                   <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-border/20 flex items-center justify-between text-xs font-bold text-primary">
-                  <Link href={f.category === "custom-dev" ? "/services" : "/products"} className="hover:underline inline-flex items-center gap-1">
+                  <Link
+                    href={f.category === "custom-dev" ? "/services" : "/products"}
+                    className="hover:underline inline-flex items-center gap-1"
+                  >
                     Explore Details <ArrowRight className="h-3 w-3" />
                   </Link>
                 </div>
@@ -492,18 +559,33 @@ export default function HomePage() {
                   <Cloud className="h-4.5 w-4.5" />
                 </div>
                 <h3 className="text-xl font-bold font-display">WpAI Cloud API (Official Meta)</h3>
-                <p className="mt-1 text-xs font-semibold text-indigo-500">For enterprise scale & verified green badge recognition</p>
+                <p className="mt-1 text-xs font-semibold text-indigo-500">
+                  For enterprise scale & verified green badge recognition
+                </p>
                 <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Processes transactions directly through Meta cloud endpoints. Highly resilient for massive broadcasts, multi-agent workspaces, and automated answering agents.
+                  Processes transactions directly through Meta cloud endpoints. Highly resilient for
+                  massive broadcasts, multi-agent workspaces, and automated answering agents.
                 </p>
                 <ul className="mt-6 space-y-2 text-xs text-muted-foreground font-medium">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> 100% Meta endpoint Uptime guarantee</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Requires template approval & business profile checks</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Subject to Meta's category conversation charges</li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> 100% Meta endpoint
+                    Uptime guarantee
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Requires template
+                    approval & business profile checks
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Subject to Meta's
+                    category conversation charges
+                  </li>
                 </ul>
               </div>
               <div className="mt-8 pt-6 border-t border-border/40">
-                <Link href="/products#cloud-api" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                <Link
+                  href="/products#cloud-api"
+                  className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                >
                   View Cloud API specs <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -517,18 +599,33 @@ export default function HomePage() {
                   <Zap className="h-4.5 w-4.5" />
                 </div>
                 <h3 className="text-xl font-bold font-display">WpAI Web Session Connect</h3>
-                <p className="mt-1 text-xs font-semibold text-emerald-500">For cost-effective transactional notifications & zero Meta fees</p>
+                <p className="mt-1 text-xs font-semibold text-emerald-500">
+                  For cost-effective transactional notifications & zero Meta fees
+                </p>
                 <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Integrates with standard web session endpoints. Simply scan the QR code to pair your device and start broadcasting custom alerts and transactional logs instantly.
+                  Integrates with standard web session endpoints. Simply scan the QR code to pair
+                  your device and start broadcasting custom alerts and transactional logs instantly.
                 </p>
                 <ul className="mt-6 space-y-2 text-xs text-muted-foreground font-medium">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Zero Meta conversation messaging charges</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Send plain text, media PDFs, and custom forms instantly</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Paired phone must remain powered & online</li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Zero Meta
+                    conversation messaging charges
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Send plain text,
+                    media PDFs, and custom forms instantly
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Paired phone must
+                    remain powered & online
+                  </li>
                 </ul>
               </div>
               <div className="mt-8 pt-6 border-t border-border/40">
-                <Link href="/products#web-session" className="text-xs font-bold text-primary hover:underline flex items-center gap-1">
+                <Link
+                  href="/products#web-session"
+                  className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                >
                   View Web Connect specs <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -542,15 +639,22 @@ export default function HomePage() {
         <Reveal>
           <div className="grid lg:grid-cols-3 gap-12 items-center">
             <div className="lg:col-span-1">
-              <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">Bespoke Custom Engineering</div>
+              <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
+                Bespoke Custom Engineering
+              </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight font-display text-foreground">
                 Need tailored dashboard workflows? Let's build.
               </h2>
               <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                If WpAI needs to sync with a custom administrative platform, proprietary internal database, or complex third-party ERP webhook triggers, our software development division custom builds the API integration layers for you.
+                If WpAI needs to sync with a custom administrative platform, proprietary internal
+                database, or complex third-party ERP webhook triggers, our software development
+                division custom builds the API integration layers for you.
               </p>
               <div className="mt-6">
-                <Link href="/services" className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+                >
                   View Custom Services <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -558,12 +662,31 @@ export default function HomePage() {
 
             <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
               {[
-                { icon: Code2, title: "Custom Admin Portals", desc: "Design and build dedicated web panels, user dashboards, and management portals using React, Next.js, and Node." },
-                { icon: Database, title: "Database Sync Middleware", desc: "Construct low-latency connectors syncing your internal client databases safely with our messaging queues." },
-                { icon: Layers, title: "Custom API Middleware", desc: "Setup secure endpoints, data mapping bridges, and backend triggers for custom messaging alerts." },
-                { icon: Cpu, title: "Workflow Automations", desc: "Automate manual entry workflows, trigger-based updates, and coordinate webhooks across your platforms." }
+                {
+                  icon: Code2,
+                  title: "Custom Admin Portals",
+                  desc: "Design and build dedicated web panels, user dashboards, and management portals using React, Next.js, and Node.",
+                },
+                {
+                  icon: Database,
+                  title: "Database Sync Middleware",
+                  desc: "Construct low-latency connectors syncing your internal client databases safely with our messaging queues.",
+                },
+                {
+                  icon: Layers,
+                  title: "Custom API Middleware",
+                  desc: "Setup secure endpoints, data mapping bridges, and backend triggers for custom messaging alerts.",
+                },
+                {
+                  icon: Cpu,
+                  title: "Workflow Automations",
+                  desc: "Automate manual entry workflows, trigger-based updates, and coordinate webhooks across your platforms.",
+                },
               ].map((s) => (
-                <div key={s.title} className="glass rounded-xl p-5 border border-border/50 hover:border-primary/20 transition-all duration-300">
+                <div
+                  key={s.title}
+                  className="glass rounded-xl p-5 border border-border/50 hover:border-primary/20 transition-all duration-300"
+                >
                   <div className="h-8.5 w-8.5 grid place-items-center rounded-lg bg-primary/10 text-primary mb-4">
                     <s.icon className="h-4.5 w-4.5" />
                   </div>
@@ -580,9 +703,16 @@ export default function HomePage() {
       <section className="mx-auto max-w-5xl px-6 py-10 border-t border-border/20">
         <Reveal>
           <div className="text-center mb-12">
-            <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">FAQ</div>
-            <h2 className="text-2xl sm:text-3xl font-bold font-display">Frequently Asked Questions</h2>
-            <p className="mt-2 text-xs sm:text-sm text-muted-foreground">Get answers to technical details about compliance, onboarding, and platform configurations.</p>
+            <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
+              FAQ
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold font-display">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
+              Get answers to technical details about compliance, onboarding, and platform
+              configurations.
+            </p>
           </div>
         </Reveal>
 
@@ -595,16 +725,18 @@ export default function HomePage() {
                   className="w-full p-5 flex items-center justify-between text-left font-semibold text-xs sm:text-sm text-foreground hover:bg-secondary/40 dark:hover:bg-white/2 transition-colors cursor-pointer"
                 >
                   <span>{faq.question}</span>
-                  <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform duration-300 shrink-0 ml-4 ${openFaq === idx ? "rotate-180 text-primary" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 text-muted-foreground transition-transform duration-300 shrink-0 ml-4 ${openFaq === idx ? "rotate-180 text-primary" : ""}`}
+                  />
                 </button>
                 <div
                   className={`transition-all duration-350 ease-in-out ${
-                    openFaq === idx ? "max-h-[200px] border-t border-border/40" : "max-h-0 pointer-events-none"
+                    openFaq === idx
+                      ? "max-h-[200px] border-t border-border/40"
+                      : "max-h-0 pointer-events-none"
                   } overflow-hidden`}
                 >
-                  <p className="p-5 text-xs text-muted-foreground leading-relaxed">
-                    {faq.answer}
-                  </p>
+                  <p className="p-5 text-xs text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             </Reveal>
@@ -616,28 +748,36 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-6 py-10 relative">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-8 sm:p-16 text-white shadow-glow">
-            <div aria-hidden="true" className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
-            <div aria-hidden="true" className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+            <div
+              aria-hidden="true"
+              className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"
+            />
             <div className="relative max-w-2xl">
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight font-display">
                 Ready to optimize your customer communication?
               </h2>
               <p className="mt-4 text-white/80 text-xs sm:text-sm leading-relaxed">
-                Connect your business lines to WpAI or schedule a review with our software solutions engineering team. We'll map the fastest path to set up conversational bots and broadcast channels.
+                Connect your business lines to WpAI or schedule a review with our software solutions
+                engineering team. We'll map the fastest path to set up conversational bots and
+                broadcast channels.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href={`mailto:info@bitaptech.com`}
+                  href={`mailto:${SITE.email}`}
                   className="inline-flex items-center gap-2 h-11 px-5 rounded-xl bg-white text-primary font-bold shadow-md hover:bg-white/95 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
                 >
-                  <Mail className="h-4 w-4" /> info@bitaptech.com
+                  <Mail className="h-4 w-4" /> {SITE.email}
                 </a>
-                <a
-                  href="mailto:info@bitaptech.com?subject=Schedule%20a%20Demo%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20schedule%20a%20custom%20demonstration%20of%20the%20platform%20for%20my%20business.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A%0ANotes%3A"
+                <Link
+                  href="/book-demo"
                   className="inline-flex items-center gap-2 h-11 px-5 rounded-xl border border-white/40 text-white font-bold hover:bg-white/10 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200"
                 >
                   Schedule Demo <ArrowRight className="h-4 w-4" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

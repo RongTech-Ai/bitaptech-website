@@ -30,8 +30,6 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
-
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
@@ -77,9 +75,12 @@ export function Nav() {
                           : "text-muted-foreground hover:text-foreground hover:bg-secondary/40 dark:hover:bg-white/5"
                       }`}
                     >
-                      Products <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`} />
+                      Products{" "}
+                      <ChevronDown
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+                      />
                     </button>
-                    
+
                     {/* Hover Dropdown Menu */}
                     <div
                       className={`absolute left-1/2 -translate-x-1/2 mt-1 w-80 rounded-2xl border border-border/50 bg-card p-3 shadow-lg transition-all duration-200 origin-top z-50 ${
@@ -89,32 +90,44 @@ export function Nav() {
                       }`}
                     >
                       <div className="flex flex-col gap-1">
-                        <Link
-                          href="/products#cloud-api"
+                        <a
+                          href="https://wpai.co.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-start gap-3 p-2 rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 transition-colors"
                         >
                           <div className="h-8.5 w-8.5 grid place-items-center rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 shrink-0">
                             <Cloud className="h-4 w-4" />
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-foreground">WpAI Official Cloud API</div>
-                            <p className="text-[10px] text-muted-foreground mt-0.5">Meta-powered WhatsApp Business Solutions</p>
+                            <div className="text-xs font-bold text-foreground">
+                              WpAI Official Cloud API
+                            </div>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">
+                              Meta-powered WhatsApp Business Solutions
+                            </p>
                           </div>
-                        </Link>
-                        
-                        <Link
-                          href="/products#web-session"
+                        </a>
+
+                        <a
+                          href="https://inst.wpai.co.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-start gap-3 p-2 rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 transition-colors"
                         >
                           <div className="h-8.5 w-8.5 grid place-items-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 shrink-0">
                             <Zap className="h-4 w-4" />
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-foreground">WpAI Web Session Connect</div>
-                            <p className="text-[10px] text-muted-foreground mt-0.5">Scan-to-connect WhatsApp Web Integration</p>
+                            <div className="text-xs font-bold text-foreground">
+                              WpAI Web Session Connect
+                            </div>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">
+                              Scan-to-connect WhatsApp Web Integration
+                            </p>
                           </div>
-                        </Link>
-                        
+                        </a>
+
                         <Link
                           href="/products#omnichannel"
                           className="flex items-start gap-3 p-2 rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 transition-colors"
@@ -124,9 +137,14 @@ export function Nav() {
                           </div>
                           <div>
                             <div className="text-xs font-bold text-foreground flex items-center gap-1.5">
-                              Omnichannel Suite <span className="text-[8px] bg-amber-500/15 text-amber-600 px-1.5 py-0.5 rounded-full font-bold uppercase">Beta</span>
+                              Omnichannel Suite{" "}
+                              <span className="text-[8px] bg-amber-500/15 text-amber-600 px-1.5 py-0.5 rounded-full font-bold uppercase">
+                                Beta
+                              </span>
                             </div>
-                            <p className="text-[10px] text-muted-foreground mt-0.5">RCS, Bulk SMS, and smart fallbacks</p>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">
+                              RCS, Bulk SMS, and smart fallbacks
+                            </p>
                           </div>
                         </Link>
                       </div>
@@ -151,12 +169,12 @@ export function Nav() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a
-              href="mailto:info@bitaptech.com?subject=Book%20a%20Demo%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20custom%20demonstration%20of%20the%20platform%20for%20my%20business.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A%0ANotes%3A"
+            <Link
+              href="/book-demo"
               className="hidden md:inline-flex items-center h-10 px-5 rounded-xl bg-gradient-primary text-white text-sm font-semibold shadow-glow hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               Book a Demo
-            </a>
+            </Link>
             <button
               className="md:hidden h-10 w-10 grid place-items-center rounded-xl hover:bg-secondary/60 dark:hover:bg-white/5 border border-transparent hover:border-border/30 transition-colors"
               onClick={() => setOpen((v) => !v)}
@@ -175,7 +193,7 @@ export function Nav() {
                 return (
                   <div key={l.to} className="flex flex-col">
                     <button
-                      onClick={() => setMobileProductsOpen(v => !v)}
+                      onClick={() => setMobileProductsOpen((v) => !v)}
                       className={`px-4 py-2.5 text-sm font-medium rounded-xl flex items-center justify-between transition-all duration-300 ${
                         pathname.startsWith("/products")
                           ? "bg-secondary text-foreground"
@@ -183,30 +201,39 @@ export function Nav() {
                       }`}
                     >
                       <span>Products</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${mobileProductsOpen ? "rotate-180" : ""}`}
+                      />
                     </button>
                     {mobileProductsOpen && (
                       <div className="pl-6 flex flex-col gap-1.5 mt-1 border-l border-border/40 ml-4 py-1">
-                        <Link
-                          href="/products#cloud-api"
+                        <a
+                          href="https://wpai.co.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           onClick={() => setOpen(false)}
                           className="flex items-center gap-2 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
                         >
-                          <Cloud className="h-4 w-4 text-indigo-500" /> WpAI Cloud API (Official Meta)
-                        </Link>
-                        <Link
-                          href="/products#web-session"
+                          <Cloud className="h-4 w-4 text-indigo-500" /> WpAI Cloud API (Official
+                          Meta)
+                        </a>
+                        <a
+                          href="https://inst.wpai.co.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           onClick={() => setOpen(false)}
                           className="flex items-center gap-2 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
                         >
-                          <Zap className="h-4 w-4 text-emerald-500" /> WpAI Web Connect (Session-based)
-                        </Link>
+                          <Zap className="h-4 w-4 text-emerald-500" /> WpAI Web Connect
+                          (Session-based)
+                        </a>
                         <Link
                           href="/products#omnichannel"
                           onClick={() => setOpen(false)}
                           className="flex items-center gap-2 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground"
                         >
-                          <MessageSquare className="h-4 w-4 text-amber-500" /> Omnichannel Suite (Beta)
+                          <MessageSquare className="h-4 w-4 text-amber-500" /> Omnichannel Suite
+                          (Beta)
                         </Link>
                       </div>
                     )}
@@ -228,13 +255,13 @@ export function Nav() {
                 </Link>
               );
             })}
-            <a
-              href="mailto:info@bitaptech.com?subject=Book%20a%20Demo%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20request%20a%20custom%20demonstration%20of%20the%20platform%20for%20my%20business.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A%0ANotes%3A"
+            <Link
+              href="/book-demo"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-secondary dark:bg-white/5 border border-border/40 text-sm font-semibold hover:bg-secondary/80 transition-all duration-200"
+              className="mt-2 inline-flex items-center justify-center h-11 px-5 rounded-xl bg-gradient-primary text-white text-sm font-semibold shadow-glow hover:opacity-95 transition-all duration-200"
             >
               Book a Demo
-            </a>
+            </Link>
           </div>
         )}
       </div>

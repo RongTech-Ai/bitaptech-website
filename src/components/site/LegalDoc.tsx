@@ -1,11 +1,12 @@
 import Link from "next/link";
+import { SITE } from "@/lib/site";
 
 // Company details used across legal pages.
 export const COMPANY = {
-  name: "BitapTech",
+  name: SITE.name,
   product: "WpAi",
-  site: "https://bitaptech.com",
-  email: "info@bitaptech.com",
+  site: SITE.url,
+  email: SITE.email,
   jurisdiction: "India",
 };
 
@@ -40,9 +41,7 @@ export function LegalDoc({
 
           {sections.map((section, i) => (
             <div key={i} className="border-t border-border/40 pt-6">
-              <h2 className="text-xl font-bold text-foreground font-display">
-                {section.heading}
-              </h2>
+              <h2 className="text-xl font-bold text-foreground font-display">{section.heading}</h2>
               <div className="mt-3 space-y-3">
                 {section.body.map((block, j) =>
                   typeof block === "string" ? (
@@ -53,7 +52,7 @@ export function LegalDoc({
                         <li key={k}>{item}</li>
                       ))}
                     </ul>
-                  )
+                  ),
                 )}
               </div>
             </div>

@@ -48,7 +48,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0.015 270);
 
-  --primary: oklch(0.48 0.22 280);          /* Trust Violet/Indigo */
+  --primary: oklch(0.48 0.22 280); /* Trust Violet/Indigo */
   --primary-foreground: oklch(0.99 0 0);
   --primary-glow: oklch(0.58 0.23 275);
 
@@ -58,7 +58,7 @@
   --muted: oklch(0.96 0.008 270);
   --muted-foreground: oklch(0.45 0.015 270);
 
-  --accent: oklch(0.72 0.16 160);           /* Conversational Mint */
+  --accent: oklch(0.72 0.16 160); /* Conversational Mint */
   --accent-foreground: oklch(0.1 0.05 160);
 
   --destructive: oklch(0.6 0.24 27);
@@ -69,9 +69,10 @@
   --ring: oklch(0.48 0.22 280);
 
   --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-  --gradient-hero: radial-gradient(1200px 600px at 50% -10%, oklch(0.92 0.04 280 / 0.5), transparent 65%),
-                   radial-gradient(800px 400px at 10% 20%, oklch(0.88 0.05 275 / 0.35), transparent 60%),
-                   radial-gradient(700px 400px at 90% 30%, oklch(0.9 0.04 160 / 0.35), transparent 60%);
+  --gradient-hero:
+    radial-gradient(1200px 600px at 50% -10%, oklch(0.92 0.04 280 / 0.5), transparent 65%),
+    radial-gradient(800px 400px at 10% 20%, oklch(0.88 0.05 275 / 0.35), transparent 60%),
+    radial-gradient(700px 400px at 90% 30%, oklch(0.9 0.04 160 / 0.35), transparent 60%);
   --gradient-text: linear-gradient(135deg, #3730a3 0%, #4f46e5 45%, #6366f1 100%);
 
   --shadow-sm: 0 1px 2px 0 oklch(0.12 0.015 270 / 0.05);
@@ -79,7 +80,6 @@
   --shadow-lg: 0 20px 50px -12px oklch(0.12 0.015 270 / 0.15);
   --shadow-glow: 0 20px 60px -20px oklch(0.48 0.22 280 / 0.4);
 }
-
 
 @layer base {
   * {
@@ -95,7 +95,10 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
@@ -131,24 +134,49 @@
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(-24px) rotate(3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-24px) rotate(3deg);
+  }
 }
 @keyframes float-slow {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(-16px) translateX(12px); }
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-16px) translateX(12px);
+  }
 }
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @utility animate-float {

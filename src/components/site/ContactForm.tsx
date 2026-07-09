@@ -52,9 +52,7 @@ export function ContactForm() {
         throw new Error(json.message || "Submission failed");
       }
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Something went wrong. Please try again.",
-      );
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setStatus("error");
     }
   };
@@ -110,13 +108,7 @@ export function ContactForm() {
         />
       </label>
       {/* Honeypot — bots fill this, humans never see it */}
-      <input
-        type="checkbox"
-        name="botcheck"
-        tabIndex={-1}
-        aria-hidden="true"
-        className="hidden"
-      />
+      <input type="checkbox" name="botcheck" tabIndex={-1} aria-hidden="true" className="hidden" />
       <button
         disabled={loading}
         className="mt-8 inline-flex items-center justify-center gap-2 h-12 px-6 rounded-xl bg-gradient-primary text-white font-bold shadow-glow hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-75 disabled:scale-100 transition-all duration-200 cursor-pointer"

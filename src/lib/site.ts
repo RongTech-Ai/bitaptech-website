@@ -9,13 +9,16 @@ export const SITE = {
   name: "BitapTech",
   legalName: "BitapTech",
   url: SITE_URL,
-  email: "info@bitaptech.com",
+  email: process.env.NEXT_PUBLIC_SITE_EMAIL || "info@bitaptech.com",
+  salesEmail: process.env.NEXT_PUBLIC_SALES_EMAIL || "sales@bitaptech.com",
   description:
     "BitapTech builds AI-powered SaaS products, automation platforms and custom software that help businesses scale, automate and grow.",
   logo: `${SITE_URL}/assets/logo-square.jpg`,
   ogImage: `${SITE_URL}/opengraph-image`,
   sameAs: [
-    "https://www.linkedin.com/company/bitaptek/",
+    process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/bitaptech2026",
+    process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/bitap_tech/",
+    process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/people/BitapTech/61591364087127/",
   ],
 } as const;
 
@@ -30,5 +33,13 @@ export const PRODUCTS = {
     name: "WpAI",
     url: "https://wpai.co.in",
     tagline: "WhatsApp automation for growing businesses",
+  },
+  metaCloudApi: {
+    name: "WpAI Official Cloud API",
+    url: "https://wpai.co.in",
+  },
+  scannerOne: {
+    name: "WpAI Web Session Connect",
+    url: "https://inst.wpai.co.in",
   },
 } as const;
