@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Space_Grotesk } from "next/font/google";
+import { MessageCircle } from "lucide-react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Providers } from "./providers";
@@ -126,6 +127,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <main className="flex-1 pt-20">{children}</main>
           <Footer />
+          <a
+            href="https://wa.me/916351910962"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact us on WhatsApp"
+            className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-105"
+          >
+            <MessageCircle className="h-7 w-7" />
+          </a>
         </Providers>
       </body>
     </html>
