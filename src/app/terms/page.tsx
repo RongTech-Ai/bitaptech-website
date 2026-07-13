@@ -24,6 +24,14 @@ const sections: LegalSection[] = [
     ],
   },
   {
+    heading: "Product-specific terms",
+    body: [
+      `${COMPANY.name} offers more than one WhatsApp product, and some terms depend on which product you use:`,
+      "WpAi Official (Meta WhatsApp Cloud API): Built on Meta's official WhatsApp Cloud API. Your use is subject to the WhatsApp and Meta compliance obligations set out below, and messaging is billed on the prepaid wallet model described in these terms.",
+      `WpAi Unofficial (device-based sync): An independent software tool that connects to your own WhatsApp session (based on WPPConnect/Baileys web clients). It is not affiliated with, endorsed by, or officially connected to Meta Platforms, Inc. or WhatsApp, and the use of automated client scripts may violate Meta's WhatsApp Terms of Service. You assume sole responsibility for your connected numbers, and ${COMPANY.name} is not liable for rate limiting, message blocking, or temporary or permanent suspensions or bans imposed by Meta or network carriers. We recommend using secondary numbers for cold outbound messaging and conservative rate throttling. This product is billed on a subscription basis (including any free trial) rather than the prepaid wallet model.`,
+    ],
+  },
+  {
     heading: "Eligibility and accounts",
     body: [
       "You must be at least 18 years old and able to form a binding contract to use the Services. You are responsible for the accuracy of your account information, for keeping your credentials secure, and for all activity that occurs under your account.",
