@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "13 July 2026";
+const LAST_UPDATED = "14 July 2026";
 
 const sections: LegalSection[] = [
   {
