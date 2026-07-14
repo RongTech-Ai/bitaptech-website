@@ -11,6 +11,17 @@ export const SITE = {
   url: SITE_URL,
   email: process.env.NEXT_PUBLIC_SITE_EMAIL || "info@bitaptech.com",
   salesEmail: process.env.NEXT_PUBLIC_SALES_EMAIL || "sales@bitaptech.com",
+  /** Registered business details — shown publicly for payment-gateway / KYC compliance. */
+  business: {
+    // Registered entity name as per KYC. TODO: replace with the exact registered name if different.
+    registeredName: process.env.NEXT_PUBLIC_BUSINESS_NAME || "6351910962",
+    address:
+      process.env.NEXT_PUBLIC_BUSINESS_ADDRESS ||
+      "Rongpara, Andichak, Chitrasenpur, West Bengal, India",
+    // TODO: replace with a real, reachable business phone number (required by PhonePe).
+    phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+91 00000 00000",
+    hours: "Monday to Friday, 9:00 – 18:00 IST",
+  },
   description:
     "BitapTech builds AI-powered SaaS products, automation platforms and custom software that help businesses scale, automate and grow.",
   logo: `${SITE_URL}/assets/logo-square.jpg`,

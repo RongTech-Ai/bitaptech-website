@@ -114,6 +114,14 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <Link
+                href="/pricing"
+                className="hover:text-foreground transition-colors duration-200"
+              >
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/privacy"
                 className="hover:text-foreground transition-colors duration-200"
               >
@@ -142,9 +150,22 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border/40 relative z-10 text-xs text-muted-foreground py-4">
-        <div className="mx-auto max-w-6xl px-6 flex items-center justify-between">
-          <p>© {new Date().getFullYear()} BitapTech. All Rights Reserved.</p>
+      <div className="border-t border-border/40 relative z-10 text-xs text-muted-foreground py-5">
+        <div className="mx-auto max-w-6xl px-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} {SITE.business.registeredName} (BitapTech). All Rights
+            Reserved.
+          </p>
+          <p className="text-[11px] leading-relaxed sm:text-right">
+            Registered office: {SITE.business.address}
+            <br className="hidden sm:block" />{" "}
+            <span className="sm:ml-0">
+              Phone: {SITE.business.phone} · Email:{" "}
+              <a href={`mailto:${SITE.email}`} className="hover:text-foreground">
+                {SITE.email}
+              </a>
+            </span>
+          </p>
         </div>
       </div>
     </footer>

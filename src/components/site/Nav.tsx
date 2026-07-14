@@ -9,6 +9,7 @@ import { Menu, X, ChevronDown, Cloud, Zap, MessageSquare } from "lucide-react";
 const links = [
   { to: "/", label: "Home" },
   { to: "/products", label: "Products" },
+  { to: "/pricing", label: "Pricing" },
   { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
