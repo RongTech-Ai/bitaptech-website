@@ -30,6 +30,8 @@ import {
   Brain,
   Send,
   TrendingUp,
+  ShoppingBag,
+  Server,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -42,7 +44,7 @@ const features = [
     id: "wp-cloud",
     category: "whatsapp",
     title: "WpAI Official Cloud API",
-    desc: "Built directly on Meta's official cloud endpoints. Requires template pre-approvals and business verification, but yields 100% official stability, high-speed broadcasts, and green checkmark eligibility.",
+    desc: "Official Meta Cloud API. Stable endpoints, high-speed broadcasts, and green checkmark eligibility.",
     badge: "Official Meta API",
     badgeColor: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
   },
@@ -50,7 +52,7 @@ const features = [
     id: "wp-web",
     category: "whatsapp",
     title: "WpAI Web Session Connect",
-    desc: "Connect your existing WhatsApp number instantly via QR scan. Draft and dispatch arbitrary messages or custom media invoices immediately. Free sending with zero Meta conversation charges.",
+    desc: "Instantly scan QR to connect. Draft and dispatch arbitrary messages or media. Zero Meta conversation charges.",
     badge: "Scan & Connect",
     badgeColor: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
   },
@@ -58,15 +60,15 @@ const features = [
     id: "rcs-rich",
     category: "sms-rcs",
     title: "RCS Business Messaging",
-    desc: "Send interactive visual carousels, verified business cards, and clickable action triggers direct to client native message inboxes. Achieves 3x higher click-through rates than classic text broadcasts.",
-    badge: "RCS Suite",
-    badgeColor: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+    desc: "Rich media, carousel menus, and verified sender names inside default SMS. Perfect for interactive promotions.",
+    badge: "Next-Gen SMS",
+    badgeColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
   },
   {
     id: "otp-alert",
     category: "sms-rcs",
     title: "Transactional OTP Gateway",
-    desc: "Direct operator-connected SMS routes for time-critical transactional notifications. Achieves average OTP handset delivery rates in under 2.5 seconds with smart carrier failover fallbacks.",
+    desc: "Direct operator-connected SMS routes for OTP notifications with smart failover.",
     badge: "Low Latency SMS",
     badgeColor: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
   },
@@ -74,7 +76,7 @@ const features = [
     id: "custom-software",
     category: "custom-dev",
     title: "Bespoke Enterprise Software",
-    desc: "Complete internal workflow ecosystem design, centralized dashboards, and proprietary administrative panels custom engineered around your precise company operations.",
+    desc: "Bespoke dashboards and panels custom-engineered for your company's workflows.",
     badge: "Bespoke Dev",
     badgeColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
   },
@@ -82,7 +84,7 @@ const features = [
     id: "middleware-api",
     category: "custom-dev",
     title: "Messaging Middleware & Syncs",
-    desc: "Custom database connectors, webhook handlers, and middleware APIs linking our messaging channels directly with your legacy ERP systems (HubSpot, Zoho, SAP, Salesforce).",
+    desc: "Custom database connectors and APIs linking messaging channels to HubSpot, Zoho, Salesforce, etc.",
     badge: "API Integration",
     badgeColor: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
   },
@@ -93,29 +95,38 @@ const faqs = [
   {
     question: "What is the difference between WhatsApp Cloud API and Web Session Connect?",
     answer:
-      "WhatsApp Cloud API is Meta's official hosting service. It requires message templates to be pre-approved, charges conversation-based fees, and is highly stable for enterprise broadcasting. Web Session Connect acts as an automated handler on top of WhatsApp Web, requiring you to scan a QR code. It bypasses Meta template approval queues and is completely free of Meta messaging fees, but is dependent on your physical phone staying active and connected.",
+      "Cloud API is Meta's official hosting service (highly stable, requires template approval, and incurs official conversation fees). Web Session Connect works by scanning a QR code like WhatsApp Web (no approvals needed, 100% free of Meta fees, but requires your phone to stay online).",
   },
   {
     question: "Do I need Meta Business Verification to get started?",
     answer:
-      "For WpAI Cloud API, Meta Business Verification is highly recommended to unlock higher messaging limits, although you can start in sandbox tiers. For WpAI Web Session Connect, no verification or approval is required; you simply scan a QR code and start sending immediately.",
+      "Only for the Cloud API (to unlock higher message quotas, though you can start in a sandbox). For Web Session Connect, no verification is required—just scan and send.",
   },
   {
     question: "How does the SMS and RCS failover configuration work?",
     answer:
-      "You can define smart fallback logic in your messaging triggers. If an internet-based notification (such as a WhatsApp template) fails to deliver within a specific time window, our platform automatically routes the notification as a verified RCS card, or falls back to direct operator carrier SMS to guarantee handset delivery.",
+      "If a WhatsApp message fails to deliver, our router automatically falls back to an RCS rich card or standard SMS within a set time window to guarantee delivery.",
   },
   {
     question: "What are the costs associated with WhatsApp Cloud API?",
     answer:
-      "There are two pricing layers: Meta's official conversation charges (which vary depending on whether the conversation category is Utility, Marketing, Authentication, or Service) and our platform subscription fee. We maintain full pricing transparency with no hidden markups on Meta's official conversation rates.",
+      "You pay Meta's official conversation rates (based on category: utility, marketing, authentication) plus our platform subscription. We offer direct-rate pricing with zero markup.",
   },
   {
     question: "Can BitapTech customize integrations with our custom CRM or internal database?",
     answer:
-      "Yes. Beside our subscription SaaS, we operate a senior custom software division. We specialize in building secure webhook middleware, custom admin panels, and legacy ERP connectors to bridge our communication engine with your proprietary databases.",
+      "Yes. Our software engineering team specializes in custom admin panels, database hooks, and proprietary CRM integrations to connect our messaging engines directly to your workspace.",
   },
 ];
+
+const iconMap = {
+  "wp-cloud": MessageSquare,
+  "wp-web": Zap,
+  "rcs-rich": Sparkles,
+  "otp-alert": Lock,
+  "custom-software": Code2,
+  "middleware-api": Database,
+};
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<Category>("all");
@@ -133,6 +144,11 @@ export default function HomePage() {
     <div className="relative overflow-hidden w-full bg-background text-foreground">
       {/* Decorative Grids */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:16px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      {/* Floating Ambient Glows */}
+      <div className="absolute top-[20%] left-[-200px] h-[500px] w-[500px] rounded-full bg-indigo-500/5 dark:bg-indigo-500/2 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[45%] right-[-200px] h-[600px] w-[600px] rounded-full bg-emerald-500/5 dark:bg-emerald-500/2 blur-[120px] pointer-events-none z-0" />
+      <div className="absolute top-[70%] left-[-200px] h-[550px] w-[550px] rounded-full bg-primary/5 dark:bg-primary/2 blur-[120px] pointer-events-none z-0" />
 
       {/* HERO SECTION */}
       <section className="relative pt-6 pb-14 md:pt-10 md:pb-20 overflow-hidden">
@@ -170,9 +186,7 @@ export default function HomePage() {
 
             {/* Subtitle description */}
             <p className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
-              Launch official WhatsApp Cloud API, pair web sessions via QR scan, deploy smart AI
-              chat agents, and trigger enterprise SMS/RCS pipelines — all from one unified,
-              developer-friendly platform.
+              Official WhatsApp Cloud API, WhatsApp Web QR sync, AI chat agents, and high-performance SMS/RCS triggers — unified in one developer-friendly platform.
             </p>
 
             {/* 3 Metrics Cards */}
@@ -221,7 +235,7 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/book-demo"
-                className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-[#4f46e5] text-white font-bold shadow-glow hover:opacity-95 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm cursor-pointer"
+                className="inline-flex items-center gap-2 h-11 px-5 rounded-full bg-gradient-primary text-white font-bold shadow-glow hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 text-xs sm:text-sm cursor-pointer"
               >
                 Book a Demo <ArrowRight className="h-4 w-4" />
               </Link>
@@ -398,12 +412,11 @@ export default function HomePage() {
             </div>
 
             {/* Bottom subtitle pill */}
-            <div className="mt-6 rounded-2xl border border-indigo-500/10 bg-indigo-50/10 dark:bg-indigo-950/5 p-4 text-center max-w-sm mx-auto shadow-sm">
-              <p className="text-xs text-muted-foreground leading-relaxed font-medium">
-                We unify conversational pathways, automate customer workflows, and deliver
-                high-speed notifications that drive{" "}
+            <div className="mt-6 rounded-2xl border border-indigo-500/10 bg-indigo-50/10 dark:bg-indigo-950/5 p-3.5 text-center max-w-xs mx-auto shadow-sm">
+              <p className="text-[11px] text-muted-foreground leading-relaxed font-medium">
+                Unify workflows, automate chats, and drive{" "}
                 <span className="font-bold text-[#4f46e5] dark:text-[#818cf8]">
-                  engagement, loyalty, and business growth.
+                  business growth.
                 </span>
               </p>
             </div>
@@ -419,288 +432,332 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRUST FACTORS ROW */}
-      <section className="border-y border-border/40 bg-secondary/15 dark:bg-white/2 py-5 relative z-10">
-        <div className="mx-auto max-w-7xl px-6 grid grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="flex items-center justify-center gap-3 p-2 lg:border-r border-border/40 last:border-none">
-            <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <ShieldCheck className="h-5 w-5" />
+      {/* INTEGRATIONS MARQUEE */}
+      <section className="border-y border-border/40 bg-secondary/15 dark:bg-zinc-950/20 py-6 overflow-hidden relative z-10">
+        <div className="mx-auto max-w-7xl px-6 text-center mb-4">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 font-mono">
+            Supported Messaging Channels & Gateways
+          </p>
+        </div>
+        <div className="relative flex overflow-x-hidden w-full">
+          <div className="animate-marquee flex whitespace-nowrap gap-16 text-xs sm:text-sm font-semibold text-muted-foreground">
+            {/* Set 1 */}
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <MessageSquare className="h-4.5 w-4.5 text-[#25D366]" />
+              <span>WhatsApp Cloud API</span>
             </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-foreground">Enterprise Grade</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">
-                Secure & Resilient Infrastructure
-              </p>
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Zap className="h-4.5 w-4.5 text-[#10B981]" />
+              <span>WhatsApp Web Connect</span>
             </div>
-          </div>
-          <div className="flex items-center justify-center gap-3 p-2 lg:border-r border-border/40 last:border-none">
-            <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <Zap className="h-5 w-5" />
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Sparkles className="h-4.5 w-4.5 text-[#3B82F6]" />
+              <span>RCS Business Cards</span>
             </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-foreground">High Performance</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">
-                Low Latency Carrier Pipes
-              </p>
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Server className="h-4.5 w-4.5 text-[#EF4444]" />
+              <span>Enterprise Bulk SMS</span>
             </div>
-          </div>
-          <div className="flex items-center justify-center gap-3 p-2 lg:border-r border-border/40 last:border-none">
-            <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <Users className="h-5 w-5" />
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Send className="h-4.5 w-4.5 text-[#6366F1]" />
+              <span>Custom Webhooks Gateway</span>
             </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-foreground">Trusted by 2000+</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">Businesses Globally</p>
+
+            {/* Set 2 (for seamless loop) */}
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <MessageSquare className="h-4.5 w-4.5 text-[#25D366]" />
+              <span>WhatsApp Cloud API</span>
             </div>
-          </div>
-          <div className="flex items-center justify-center gap-3 p-2 last:border-none">
-            <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-              <Award className="h-5 w-5" />
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Zap className="h-4.5 w-4.5 text-[#10B981]" />
+              <span>WhatsApp Web Connect</span>
             </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-foreground">MSME Registered</div>
-              <p className="text-[9px] text-muted-foreground font-semibold">
-                Official Gov Recognition
-              </p>
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Sparkles className="h-4.5 w-4.5 text-[#3B82F6]" />
+              <span>RCS Business Cards</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Server className="h-4.5 w-4.5 text-[#EF4444]" />
+              <span>Enterprise Bulk SMS</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-foreground transition-colors duration-200">
+              <Send className="h-4.5 w-4.5 text-[#6366F1]" />
+              <span>Custom Webhooks Gateway</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DYNAMIC CATEGORY FILTER SECTION */}
-      <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+      {/* PRODUCT & SOLUTIONS SHOWCASES */}
+      <section className="mx-auto max-w-7xl px-6 py-12 md:py-16 space-y-20 md:space-y-28 relative z-10">
         <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
             <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-              Our Capabilities
+              Our Products & Services
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-foreground leading-tight">
-              Explore messaging platforms & custom software.
+              Powerful messaging channels & custom software.
             </h2>
-            <p className="mt-3 text-muted-foreground text-sm">
-              Filter through our specialized messaging services, scan-to-connect nodes, and custom
-              middleware structures.
+            <p className="mt-3 text-muted-foreground text-xs sm:text-sm max-w-lg mx-auto">
+              Explore how our official WhatsApp APIs, session integrations, and bespoke engineering connect customer communications.
             </p>
           </div>
         </Reveal>
 
-        {/* Tab Selectors */}
-        <div className="flex justify-center flex-wrap gap-2 mb-10">
-          {(["all", "whatsapp", "sms-rcs", "custom-dev"] as const).map((tab) => {
-            const labels: Record<Category, string> = {
-              all: "Show All",
-              whatsapp: "Conversational (WhatsApp)",
-              "sms-rcs": "Enterprise SMS & RCS",
-              "custom-dev": "Bespoke Software Services",
-            };
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 text-xs font-bold rounded-xl border transition-all duration-300 ${
-                  activeTab === tab
-                    ? "bg-gradient-primary text-white border-primary shadow-glow"
-                    : "bg-card border-border text-muted-foreground hover:text-foreground hover:border-primary/20"
-                }`}
+        {/* SHOWCASE 1: WhatsApp Official Cloud API (Text Left, Graphic Right) */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <Reveal className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-3 py-1 text-xs font-bold border border-indigo-500/20">
+              <Cloud className="h-3.5 w-3.5" /> Official Meta Cloud API
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold font-display leading-tight">
+              Scale messaging with Meta's official hosting
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Connect your business CRM or support desks directly to Meta's verified endpoints. Perfect for enterprise campaigns, green badge recognition, and unlimited daily broadcasts with guaranteed deliverability.
+            </p>
+            <ul className="space-y-2.5 text-xs text-muted-foreground font-medium">
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Verified official Green Checkmark eligibility
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Cloud session queues preserve messages during outages
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Connect multiple custom support agents seamlessly
+              </li>
+            </ul>
+            <div className="pt-2">
+              <Link
+                href="/products#cloud-api"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4f46e5] dark:text-[#818cf8] hover:underline"
               >
-                {labels[tab]}
-              </button>
-            );
-          })}
+                View Cloud API Specifications <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="flex justify-center">
+            {/* Mock WhatsApp Chat UI Visual */}
+            <div className="relative w-full max-w-[280px] rounded-[36px] border-8 border-zinc-800 dark:border-zinc-700 bg-zinc-950 p-2.5 shadow-2xl overflow-hidden aspect-[9/18]">
+              {/* Speaker/Camera notch */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3.5 w-24 bg-zinc-800 rounded-b-xl z-20" />
+              
+              {/* Chat Screen container */}
+              <div className="h-full w-full rounded-[20px] bg-[#efeae2] dark:bg-zinc-900 flex flex-col justify-between overflow-hidden relative font-sans text-[10px]">
+                {/* Whatsapp Chat Header */}
+                <div className="bg-[#075e54] text-white p-2.5 pt-4 flex items-center gap-2 shadow-sm">
+                  <div className="h-6 w-6 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-[9px] shadow-sm">BT</div>
+                  <div>
+                    <div className="font-bold flex items-center gap-0.5 leading-tight text-[9px]">
+                      BitapTech Bot
+                      <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[5px] shrink-0 font-extrabold">✓</span>
+                    </div>
+                    <span className="text-[7px] text-emerald-300 font-semibold block leading-none mt-0.5">Online</span>
+                  </div>
+                </div>
+                
+                {/* Chat Messages */}
+                <div className="flex-1 p-2 space-y-2 overflow-y-auto flex flex-col justify-end bg-[radial-gradient(#dfdcd6_1px,transparent_1px)] bg-[size:8px_8px] dark:bg-[radial-gradient(#262626_1px,transparent_1px)] text-[9px]">
+                  {/* Bot Message 1 */}
+                  <div className="self-start bg-white dark:bg-zinc-800 text-foreground p-2 rounded-lg rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                    Hello! How can we help you scale your customer communications today? 🚀
+                  </div>
+                  {/* User Message */}
+                  <div className="self-end bg-[#dcf8c6] dark:bg-emerald-950 text-foreground p-2 rounded-lg rounded-tr-none shadow-sm max-w-[85%] leading-relaxed">
+                    We need to broadcast notifications to 10k users.
+                  </div>
+                  {/* Bot Message 2 */}
+                  <div className="self-start bg-white dark:bg-zinc-800 text-foreground p-2 rounded-lg rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                    Understood. We recommend the Official Cloud API for safe broadcasts. Click below to view:
+                    <div className="mt-2 border-t border-border/20 pt-1.5 flex justify-center">
+                      <Link href="/book-demo" className="inline-flex items-center gap-1 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-extrabold px-2.5 py-1 rounded-md text-[8px] shadow-sm">
+                        View Demo <ArrowRight className="h-2 w-2" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Chat Input Bar */}
+                <div className="bg-[#f0f0f0] dark:bg-zinc-800/80 p-1.5 flex items-center gap-1.5 border-t border-border/10">
+                  <div className="flex-1 bg-white dark:bg-zinc-700 rounded-full py-1 px-3 text-[8px] text-muted-foreground border border-border/40">
+                    Type a message...
+                  </div>
+                  <div className="h-6 w-6 rounded-full bg-[#075e54] flex items-center justify-center text-white shadow-sm shrink-0">
+                    <Send className="h-2.5 w-2.5" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
 
-        {/* Dynamic Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredFeatures.map((f, i) => (
-              <motion.div
-                layout
-                key={f.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="group relative rounded-2xl border border-border bg-card p-6 h-full flex flex-col justify-between hover:shadow-elegant hover:border-primary/20 transition-all duration-300"
+        {/* SHOWCASE 2: WpAI Web Session Connect (Graphic Left, Text Right) */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <Reveal className="order-2 md:order-1 flex justify-center">
+            {/* Mock QR Scan Dashboard Visual */}
+            <div className="flex flex-col items-center justify-center p-6 border border-border/80 rounded-2xl bg-white/40 dark:bg-zinc-950/20 shadow-sm backdrop-blur-sm relative overflow-hidden min-h-[330px] w-full max-w-[340px]">
+              {/* Floating ambient orb */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-36 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none" />
+              
+              {/* Mock QR Dashboard Frame */}
+              <div className="relative border border-border/60 rounded-xl bg-card p-4 shadow-md w-full max-w-[220px] text-center z-10 hover:scale-[1.02] transition-transform duration-300">
+                <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-2.5">
+                  WpAI Web Session Sync
+                </div>
+                
+                {/* QR Code Container */}
+                <div className="relative mx-auto w-28 h-28 border border-border/40 p-1.5 rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                  {/* Simulated QR Grid Patterns */}
+                  <div className="grid grid-cols-4 gap-1.5 w-full h-full opacity-85">
+                    <div className="border-[5px] border-zinc-955 rounded" />
+                    <div className="grid grid-cols-2 gap-0.5 p-0.5">
+                      <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                    </div>
+                    <div className="grid grid-cols-2 gap-0.5 p-0.5">
+                      <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                    </div>
+                    <div className="border-[5px] border-zinc-955 rounded" />
+                    <div className="bg-zinc-955 rounded-sm" />
+                    <div className="bg-zinc-955 rounded-sm" />
+                    <div className="bg-zinc-955 rounded-sm" />
+                    <div className="border-[5px] border-zinc-955 rounded" />
+                  </div>
+                  {/* Animated scanline */}
+                  <div className="absolute left-0 w-full h-[2px] bg-emerald-500 shadow-[0_0_8px_#10b981] animate-[bounce_3s_infinite]" />
+                </div>
+                
+                {/* Status Indicator */}
+                <div className="mt-3 flex items-center justify-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+                  <span className="text-[8px] font-bold text-muted-foreground">Waiting for Scan...</span>
+                </div>
+              </div>
+              
+              {/* Secondary status overlay */}
+              <div className="mt-3.5 text-center z-10 px-4">
+                <span className="text-[9px] text-muted-foreground font-semibold leading-normal block">
+                  Scan and sync your existing WhatsApp line to send notifications instantly.
+                </span>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal className="order-1 md:order-2 space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3 py-1 text-xs font-bold border border-emerald-500/20">
+              <Zap className="h-3.5 w-3.5" /> Scan-to-Connect QR Session
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold font-display leading-tight">
+              Send alerts from your number with zero Meta tariffs
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Pair your active phone number in under 5 minutes. No template registration or Business Verification required. Send customized PDF bills, transactional invoices, and automated updates directly from your number.
+            </p>
+            <ul className="space-y-2.5 text-xs text-muted-foreground font-medium">
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Zero conversation fees (100% Meta tariff-free)
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Sends images, PDF attachments, and media instantly
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Uses standard WhatsApp Web QR sync mechanics
+              </li>
+            </ul>
+            <div className="pt-2">
+              <Link
+                href="/products#web-session"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
               >
+                Explore Session Specifications <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+
+        {/* SHOWCASE 3: Custom Dev & Routing Pipeline (Text Left, Graphic Right) */}
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <Reveal className="space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 px-3 py-1 text-xs font-bold border border-rose-500/20">
+              <Cpu className="h-3.5 w-3.5" /> Custom Middleware & APIs
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-bold font-display leading-tight">
+              Bespoke CRM integrations & failover routing
+            </h3>
+            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              Need custom admin dashboards, database triggers, or operator routes? Our software engineers write dedicated synchronization middleware linking your HubSpot, Zoho, or custom ERP systems to active messaging routes.
+            </p>
+            <ul className="space-y-2.5 text-xs text-muted-foreground font-medium">
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-rose-500 shrink-0" /> High-speed carrier SMPP setups (up to 2,000 TPS)
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-rose-500 shrink-0" /> Automatic SMS/RCS fallback when chats fail
+              </li>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-rose-500 shrink-0" /> Custom React/Next.js dashboard interfaces
+              </li>
+            </ul>
+            <div className="pt-2">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-500 hover:underline"
+              >
+                View Bespoke Services <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="flex justify-center">
+            {/* Pipeline Flowchart Visual */}
+            <div className="flex flex-col gap-2.5 justify-center p-5 border border-border/80 rounded-2xl bg-white/40 dark:bg-zinc-950/20 shadow-sm backdrop-blur-sm min-h-[310px] w-full max-w-[340px] relative overflow-hidden">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-36 rounded-full bg-rose-500/10 blur-2xl pointer-events-none" />
+              
+              {/* Flow Node 1 */}
+              <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                <div className="h-7 w-7 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                  <Server className="h-3.5 w-3.5" />
+                </div>
                 <div>
-                  <div
-                    className={`inline-flex self-start rounded-full border px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider mb-4 ${f.badgeColor}`}
-                  >
-                    {f.badge}
-                  </div>
-                  <h3 className="text-lg font-bold font-display text-foreground leading-snug">
-                    {f.title}
-                  </h3>
-                  <p className="mt-3 text-xs text-muted-foreground leading-relaxed">{f.desc}</p>
+                  <h4 className="text-[9px] font-bold text-foreground leading-tight">API / Webhook Trigger</h4>
+                  <p className="text-[8px] text-muted-foreground font-semibold">User triggers transactional notification</p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-border/20 flex items-center justify-between text-xs font-bold text-primary">
-                  <Link
-                    href={f.category === "custom-dev" ? "/services" : "/products"}
-                    className="hover:underline inline-flex items-center gap-1"
-                  >
-                    Explore Details <ArrowRight className="h-3 w-3" />
-                  </Link>
+              </div>
+              
+              {/* Connecting arrow line */}
+              <div className="h-5 w-[2px] bg-gradient-to-b from-rose-500/80 to-indigo-500/80 ml-6 self-start animate-pulse" />
+              
+              {/* Flow Node 2 */}
+              <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                <div className="h-7 w-7 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                  <Cloud className="h-3.5 w-3.5" />
                 </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                <div>
+                  <h4 className="text-[9px] font-bold text-foreground leading-tight">WpAI Routing Middleware</h4>
+                  <p className="text-[8px] text-muted-foreground font-semibold">Checking primary WhatsApp channel state</p>
+                </div>
+              </div>
+              
+              {/* Connecting arrow line */}
+              <div className="h-5 w-[2px] bg-gradient-to-b from-indigo-500/80 to-emerald-500/80 ml-6 self-start animate-pulse" />
+              
+              {/* Flow Node 3 */}
+              <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                <div className="h-7 w-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                  <Send className="h-3.5 w-3.5" />
+                </div>
+                <div>
+                  <h4 className="text-[9px] font-bold text-foreground leading-tight">Carrier SMS / RCS Fallback</h4>
+                  <p className="text-[8px] text-muted-foreground font-semibold">Automatic operator fallback triggers in &lt; 2s</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
         </div>
-      </section>
-
-      {/* WHATSAPP ARCHITECTURAL TRANSPARENCY */}
-      <section className="mx-auto max-w-7xl px-6 py-8 border-t border-border/20">
-        <Reveal>
-          <div className="grid md:grid-cols-2 gap-8 items-stretch">
-            {/* Cloud API Card */}
-            <div className="group relative rounded-2xl border border-border bg-card p-8 flex flex-col justify-between hover:border-primary/25 hover:shadow-elegant transition-all duration-300">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-indigo-500 rounded-t-2xl" />
-              <div>
-                <div className="h-9 w-9 grid place-items-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 mb-6">
-                  <Cloud className="h-4.5 w-4.5" />
-                </div>
-                <h3 className="text-xl font-bold font-display">WpAI Cloud API (Official Meta)</h3>
-                <p className="mt-1 text-xs font-semibold text-indigo-500">
-                  For enterprise scale & verified green badge recognition
-                </p>
-                <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Processes transactions directly through Meta cloud endpoints. Highly resilient for
-                  massive broadcasts, multi-agent workspaces, and automated answering agents.
-                </p>
-                <ul className="mt-6 space-y-2 text-xs text-muted-foreground font-medium">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> 100% Meta endpoint
-                    Uptime guarantee
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Requires template
-                    approval & business profile checks
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-indigo-500 shrink-0" /> Subject to Meta's
-                    category conversation charges
-                  </li>
-                </ul>
-              </div>
-              <div className="mt-8 pt-6 border-t border-border/40">
-                <Link
-                  href="/products#cloud-api"
-                  className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
-                >
-                  View Cloud API specs <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Web Session Card */}
-            <div className="group relative rounded-2xl border border-border bg-card p-8 flex flex-col justify-between hover:border-accent/25 hover:shadow-elegant transition-all duration-300">
-              <div className="absolute top-0 left-0 w-full h-1.5 bg-emerald-500 rounded-t-2xl" />
-              <div>
-                <div className="h-9 w-9 grid place-items-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mb-6">
-                  <Zap className="h-4.5 w-4.5" />
-                </div>
-                <h3 className="text-xl font-bold font-display">WpAI Web Session Connect</h3>
-                <p className="mt-1 text-xs font-semibold text-emerald-500">
-                  For cost-effective transactional notifications & zero Meta fees
-                </p>
-                <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  Integrates with standard web session endpoints. Simply scan the QR code to pair
-                  your device and start broadcasting custom alerts and transactional logs instantly.
-                </p>
-                <ul className="mt-6 space-y-2 text-xs text-muted-foreground font-medium">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Zero Meta
-                    conversation messaging charges
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Send plain text,
-                    media PDFs, and custom forms instantly
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" /> Paired phone must
-                    remain powered & online
-                  </li>
-                </ul>
-              </div>
-              <div className="mt-8 pt-6 border-t border-border/40">
-                <Link
-                  href="/products#web-session"
-                  className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
-                >
-                  View Web Connect specs <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* CUSTOM ENGINEERING SERVICES */}
-      <section className="mx-auto max-w-7xl px-6 py-8 border-t border-border/20">
-        <Reveal>
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            <div className="lg:col-span-1">
-              <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-                Bespoke Custom Engineering
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight font-display text-foreground">
-                Need tailored dashboard workflows? Let's build.
-              </h2>
-              <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                If WpAI needs to sync with a custom administrative platform, proprietary internal
-                database, or complex third-party ERP webhook triggers, our software development
-                division custom builds the API integration layers for you.
-              </p>
-              <div className="mt-6">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
-                >
-                  View Custom Services <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="lg:col-span-2 grid sm:grid-cols-2 gap-4">
-              {[
-                {
-                  icon: Code2,
-                  title: "Custom Admin Portals",
-                  desc: "Design and build dedicated web panels, user dashboards, and management portals using React, Next.js, and Node.",
-                },
-                {
-                  icon: Database,
-                  title: "Database Sync Middleware",
-                  desc: "Construct low-latency connectors syncing your internal client databases safely with our messaging queues.",
-                },
-                {
-                  icon: Layers,
-                  title: "Custom API Middleware",
-                  desc: "Setup secure endpoints, data mapping bridges, and backend triggers for custom messaging alerts.",
-                },
-                {
-                  icon: Cpu,
-                  title: "Workflow Automations",
-                  desc: "Automate manual entry workflows, trigger-based updates, and coordinate webhooks across your platforms.",
-                },
-              ].map((s) => (
-                <div
-                  key={s.title}
-                  className="glass rounded-xl p-5 border border-border/50 hover:border-primary/20 transition-all duration-300"
-                >
-                  <div className="h-8.5 w-8.5 grid place-items-center rounded-lg bg-primary/10 text-primary mb-4">
-                    <s.icon className="h-4.5 w-4.5" />
-                  </div>
-                  <h3 className="font-bold text-sm font-display text-foreground">{s.title}</h3>
-                  <p className="mt-2 text-[11px] text-muted-foreground leading-relaxed">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* INTERACTIVE FAQ ACCORDION */}
-      <section className="mx-auto max-w-5xl px-6 py-10 border-t border-border/20">
+      <section className="mx-auto max-w-5xl px-6 py-4 border-t border-border/20 relative z-10">
         <Reveal>
           <div className="text-center mb-12">
             <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
@@ -716,17 +773,25 @@ export default function HomePage() {
           </div>
         </Reveal>
 
-        <div className="space-y-3">
+        <div className="space-y-3 max-w-4xl mx-auto">
           {faqs.map((faq, idx) => (
             <Reveal key={idx} delay={idx * 0.04}>
-              <div className="rounded-xl border border-border bg-card overflow-hidden transition-all duration-300">
+              <div
+                className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                  openFaq === idx
+                    ? "border-primary/30 bg-indigo-50/5 dark:bg-zinc-950/20 shadow-md border-l-2 border-l-primary"
+                    : "border-border/80 bg-white/40 dark:bg-zinc-950/15 hover:border-primary/20"
+                }`}
+              >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 flex items-center justify-between text-left font-semibold text-xs sm:text-sm text-foreground hover:bg-secondary/40 dark:hover:bg-white/2 transition-colors cursor-pointer"
+                  className="w-full p-4 flex items-center justify-between text-left font-semibold text-xs sm:text-sm text-foreground hover:bg-secondary/20 dark:hover:bg-white/1 transition-colors cursor-pointer"
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
-                    className={`h-4 w-4 text-muted-foreground transition-transform duration-300 shrink-0 ml-4 ${openFaq === idx ? "rotate-180 text-primary" : ""}`}
+                    className={`h-4 w-4 text-muted-foreground transition-transform duration-300 shrink-0 ml-4 ${
+                      openFaq === idx ? "rotate-180 text-primary" : ""
+                    }`}
                   />
                 </button>
                 <div
@@ -736,7 +801,7 @@ export default function HomePage() {
                       : "max-h-0 pointer-events-none"
                   } overflow-hidden`}
                 >
-                  <p className="p-5 text-xs text-muted-foreground leading-relaxed">{faq.answer}</p>
+                  <p className="p-4 text-xs text-muted-foreground leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             </Reveal>
@@ -745,7 +810,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="mx-auto max-w-7xl px-6 py-10 relative">
+      <section className="mx-auto max-w-7xl px-6 pt-4 pb-2 relative">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-8 sm:p-16 text-white shadow-glow">
             <div

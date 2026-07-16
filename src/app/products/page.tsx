@@ -11,6 +11,7 @@ import {
   Terminal,
   Server,
   Send,
+  Globe,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -150,24 +151,55 @@ export default function ProductsPage() {
                   </div>
                 </div>
               </div>
-              <div className="bg-secondary/15 dark:bg-white/2 p-6 rounded-2xl border border-border/40 flex flex-col gap-4">
-                <h3 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-display">
-                  <Terminal className="h-3.5 w-3.5 text-indigo-500" /> Cloud API Specifications
-                </h3>
-                <p className="text-[11px] text-muted-foreground leading-relaxed">
-                  Uses JSON endpoints to trigger message payloads. All message templates must follow
-                  Meta's standard categories (Marketing, Utility, Authentication, Service) and
-                  undergo verification before campaign execution.
-                </p>
-                <div className="border-t border-border/20 pt-4 mt-2">
-                  <a
-                    href="https://wpai.co.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline"
-                  >
-                    Launch WpAI Platform <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
+              {/* Mock WhatsApp Chat UI Visual */}
+              <div className="relative mx-auto w-full max-w-[280px] rounded-[36px] border-8 border-zinc-800 dark:border-zinc-700 bg-zinc-950 p-2.5 shadow-2xl overflow-hidden aspect-[9/18]">
+                {/* Speaker/Camera notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 h-3.5 w-24 bg-zinc-800 rounded-b-xl z-20" />
+                
+                {/* Chat Screen container */}
+                <div className="h-full w-full rounded-[20px] bg-[#efeae2] dark:bg-zinc-900 flex flex-col justify-between overflow-hidden relative font-sans text-[10px]">
+                  {/* Whatsapp Chat Header */}
+                  <div className="bg-[#075e54] text-white p-2.5 pt-4 flex items-center gap-2 shadow-sm">
+                    <div className="h-6 w-6 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-[9px] shadow-sm">BT</div>
+                    <div>
+                      <div className="font-bold flex items-center gap-0.5 leading-tight text-[9px]">
+                        BitapTech Bot
+                        <span className="h-2.5 w-2.5 rounded-full bg-blue-500 flex items-center justify-center text-white text-[5px] shrink-0 font-extrabold">✓</span>
+                      </div>
+                      <span className="text-[7px] text-emerald-300 font-semibold block leading-none mt-0.5">Online</span>
+                    </div>
+                  </div>
+                  
+                  {/* Chat Messages */}
+                  <div className="flex-1 p-2 space-y-2 overflow-y-auto flex flex-col justify-end bg-[radial-gradient(#dfdcd6_1px,transparent_1px)] bg-[size:8px_8px] dark:bg-[radial-gradient(#262626_1px,transparent_1px)] text-[9px]">
+                    {/* Bot Message 1 */}
+                    <div className="self-start bg-white dark:bg-zinc-800 text-foreground p-2 rounded-lg rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                      Hello! How can we help you scale your operations today? 🚀
+                    </div>
+                    {/* User Message */}
+                    <div className="self-end bg-[#dcf8c6] dark:bg-emerald-950 text-foreground p-2 rounded-lg rounded-tr-none shadow-sm max-w-[85%] leading-relaxed">
+                      We want to automate our CRM alerts.
+                    </div>
+                    {/* Bot Message 2 */}
+                    <div className="self-start bg-white dark:bg-zinc-800 text-foreground p-2 rounded-lg rounded-tl-none shadow-sm max-w-[85%] leading-relaxed">
+                      Perfect! Here is our scheduler. Click below to book a direct setup consultation:
+                      <div className="mt-2 border-t border-border/20 pt-1.5 flex justify-center">
+                        <Link href="/book-demo" className="inline-flex items-center gap-1 bg-[#4f46e5] hover:bg-[#4338ca] text-white font-extrabold px-2 py-1 rounded-md text-[8px] shadow-sm">
+                          Book Consultation <ArrowRight className="h-2 w-2" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Chat Input Bar */}
+                  <div className="bg-[#f0f0f0] dark:bg-zinc-800/80 p-1.5 flex items-center gap-1.5 border-t border-border/10">
+                    <div className="flex-1 bg-white dark:bg-zinc-700 rounded-full py-1 px-3 text-[8px] text-muted-foreground border border-border/40">
+                      Type a message...
+                    </div>
+                    <div className="h-6 w-6 rounded-full bg-[#075e54] flex items-center justify-center text-white shadow-sm shrink-0">
+                      <Send className="h-2.5 w-2.5" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -181,24 +213,58 @@ export default function ProductsPage() {
           <div className="relative rounded-3xl overflow-hidden border border-border bg-card shadow-sm hover:border-emerald-500/20 transition-all duration-300">
             <div className="absolute top-0 left-0 w-full h-2 bg-emerald-500" />
             <div className="grid md:grid-cols-2 gap-8 items-center p-8 sm:p-12">
-              <div className="order-2 md:order-1 bg-secondary/15 dark:bg-white/2 p-6 rounded-2xl border border-border/40 flex flex-col gap-4">
-                <h3 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-display">
-                  <Zap className="h-3.5 w-3.5 text-emerald-500" /> Session Connectivity Rules
-                </h3>
-                <p className="text-[11px] text-muted-foreground leading-relaxed">
-                  Operates by automating your browser instance session via scanned QR code. To
-                  prevent delivery timeouts, ensure your paired phone maintains battery power, has
-                  constant network coverage, and conforms to active platform guidelines.
-                </p>
-                <div className="border-t border-border/20 pt-4 mt-2">
-                  <a
-                    href="https://inst.wpai.co.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline"
-                  >
-                    Launch Scan Dashboard <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
+              {/* Mock QR Scan Dashboard Visual */}
+              <div className="flex flex-col items-center justify-center p-6 border border-border/80 rounded-2xl bg-white/40 dark:bg-zinc-950/20 shadow-sm backdrop-blur-sm relative overflow-hidden min-h-[340px] order-2 md:order-1">
+                {/* Floating ambient orb */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-36 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none" />
+                
+                {/* Mock QR Dashboard Frame */}
+                <div className="relative border border-border/60 rounded-xl bg-card p-4 shadow-md w-full max-w-[240px] text-center z-10 hover:scale-[1.02] transition-transform duration-300">
+                  <div className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider mb-2.5">
+                    WpAI Web Session Sync
+                  </div>
+                  
+                  {/* QR Code Container */}
+                  <div className="relative mx-auto w-32 h-32 border border-border/40 p-1.5 rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                    {/* Simulated QR Grid Patterns */}
+                    <div className="grid grid-cols-4 gap-2 w-full h-full opacity-85">
+                      <div className="border-[5px] border-zinc-955 rounded" />
+                      <div className="grid grid-cols-2 gap-0.5 p-0.5">
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                      </div>
+                      <div className="grid grid-cols-2 gap-0.5 p-0.5">
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                      </div>
+                      <div className="border-[5px] border-zinc-955 rounded" />
+                      <div className="bg-zinc-955 rounded-sm" /><div className="bg-zinc-955 rounded-sm" />
+                      <div className="bg-zinc-955 rounded-sm" /><div className="bg-zinc-955 rounded-sm" />
+                      <div className="bg-zinc-955 rounded-sm" /><div className="bg-zinc-955 rounded-sm" />
+                      <div className="border-[5px] border-zinc-955 rounded" />
+                      <div className="bg-zinc-955 rounded-sm" /><div className="bg-zinc-955 rounded-sm" />
+                      <div className="bg-zinc-955 rounded-sm" /><div className="bg-zinc-955 rounded-sm" />
+                      <div className="grid grid-cols-2 gap-0.5 p-0.5">
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                        <div className="bg-zinc-955 rounded-[1px]" /><div className="bg-zinc-955 rounded-[1px]" />
+                      </div>
+                    </div>
+                    {/* Animated scanline */}
+                    <div className="absolute left-0 w-full h-[2px] bg-emerald-500 shadow-[0_0_8px_#10b981] animate-[bounce_3s_infinite]" />
+                  </div>
+                  
+                  {/* Status Indicator */}
+                  <div className="mt-3 flex items-center justify-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500 animate-pulse" />
+                    <span className="text-[8px] font-bold text-muted-foreground">Waiting for Scan...</span>
+                  </div>
+                </div>
+                
+                {/* Secondary status overlay */}
+                <div className="mt-3 text-center z-10 px-2">
+                  <span className="text-[9px] text-muted-foreground font-semibold leading-normal block">
+                    Scan device session to instantly start broadcasting alerts without templates.
+                  </span>
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -331,22 +397,47 @@ export default function ProductsPage() {
                   </div>
                 </div>
               </div>
-              <div className="bg-secondary/15 dark:bg-white/2 p-6 rounded-2xl border border-border/40 flex flex-col gap-4">
-                <h3 className="text-xs font-bold text-foreground flex items-center gap-1.5 font-display">
-                  <Send className="h-3.5 w-3.5 text-rose-500" /> Operator Compliance
-                </h3>
-                <p className="text-[11px] text-muted-foreground leading-relaxed">
-                  In compliance with TRAI regulations, all transactional and promotional SMS traffic
-                  routed in India requires verified DLT registration, template approvals, and
-                  registered headers.
-                </p>
-                <div className="border-t border-border/20 pt-4 mt-2">
-                  <a
-                    href={`mailto:${SITE.email}?subject=Setup%20SMPP%20Endpoint%20Inquiry%20-%20BitapTech&body=Hi%20BitapTech%20Team%2C%0A%0AI%20would%20like%20to%20request%20setup%20assistance%20for%20an%20SMPP%20v3.4%20telephony%20endpoint.%0A%0AName%3A%0ACompany%3A%0APhone%20Number%3A`}
-                    className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:underline"
-                  >
-                    Setup SMPP Endpoint <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
+              {/* Pipeline Flowchart Visual */}
+              <div className="flex flex-col gap-2.5 justify-center p-5 border border-border/80 rounded-2xl bg-white/40 dark:bg-zinc-950/20 shadow-sm backdrop-blur-sm min-h-[320px] relative overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-36 w-36 rounded-full bg-rose-500/10 blur-2xl pointer-events-none" />
+                
+                {/* Flow Node 1 */}
+                <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                  <div className="h-7 w-7 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                    <Server className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <h4 className="text-[9px] font-bold text-foreground leading-tight">API / Webhook trigger</h4>
+                    <p className="text-[8px] text-muted-foreground font-semibold">User triggers OTP notifications</p>
+                  </div>
+                </div>
+                
+                {/* Connecting arrow line */}
+                <div className="h-5 w-[2px] bg-gradient-to-b from-rose-500/80 to-indigo-500/80 ml-6 self-start animate-pulse" />
+                
+                {/* Flow Node 2 */}
+                <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                  <div className="h-7 w-7 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                    <Cloud className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <h4 className="text-[9px] font-bold text-foreground leading-tight">WpAI Routing Middleware</h4>
+                    <p className="text-[8px] text-muted-foreground font-semibold">Checking primary WhatsApp channel state</p>
+                  </div>
+                </div>
+                
+                {/* Connecting arrow line */}
+                <div className="h-5 w-[2px] bg-gradient-to-b from-indigo-500/80 to-emerald-500/80 ml-6 self-start animate-pulse" />
+                
+                {/* Flow Node 3 */}
+                <div className="relative border border-border/60 rounded-xl bg-card p-2.5 shadow-sm z-10 flex items-center gap-2.5 hover:scale-[1.01] transition-transform duration-300">
+                  <div className="h-7 w-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                    <Send className="h-3.5 w-3.5" />
+                  </div>
+                  <div>
+                    <h4 className="text-[9px] font-bold text-foreground leading-tight">Carrier SMS Fallback (Airtel / Jio)</h4>
+                    <p className="text-[8px] text-muted-foreground font-semibold">Automatic DLT routing triggers in &lt; 2s</p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,73 +1,31 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin, Mail, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 mt-10 relative overflow-hidden bg-background">
+    <footer className="border-t border-border/40 mt-4 relative overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-t from-primary/5 via-transparent to-transparent pointer-events-none" />
 
-      <div className="mx-auto max-w-6xl px-6 pt-10 pb-8 grid gap-10 md:grid-cols-4 relative z-10">
-        <div className="md:col-span-2">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="bg-white border border-border/70 shadow-sm rounded-xl flex items-center justify-center h-11 w-44 overflow-hidden relative hover:border-primary/20 transition-colors">
-              <Image
-                src="/assets/logo-horizontal.jpg"
-                alt="BitapTech Logo"
-                width={240}
-                height={54}
-                className="absolute inset-0 h-full w-full object-contain scale-[1.6] mix-blend-multiply"
-              />
-            </div>
+      <div className="mx-auto max-w-6xl px-6 pt-6 pb-4 grid gap-8 grid-cols-2 md:grid-cols-5 relative z-10">
+        <div className="col-span-2 md:col-span-2">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+            <Image
+              src="/assets/logo-horizontal.png"
+              alt="BitapTech Logo"
+              width={220}
+              height={96}
+              className="h-14 sm:h-16 w-auto"
+            />
           </Link>
           <p className="mt-4 text-sm text-muted-foreground max-w-sm leading-relaxed">
             Building the Future of Conversations. We craft high-performance SaaS messaging platforms
             and enterprise integrations for modern businesses.
           </p>
-          <div className="flex items-center gap-3 mt-6 text-[11px] text-muted-foreground border-t border-border/20 pt-4 max-w-sm">
-            <ShieldCheck className="h-4.5 w-4.5 text-emerald-500 shrink-0" />
-            <span>GDPR Aligned Data Privacy & Secure SSL Endpoints</span>
-          </div>
-          <div className="flex items-center gap-3.5 mt-4">
-            <a
-              href={SITE.sameAs[0]}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="BitapTech on LinkedIn"
-              className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
-            >
-              <Linkedin className="h-4.5 w-4.5" />
-            </a>
-            <a
-              href={SITE.sameAs[1]}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="BitapTech on Instagram"
-              className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
-            >
-              <Instagram className="h-4.5 w-4.5" />
-            </a>
-            <a
-              href={SITE.sameAs[2]}
-              target="_blank"
-              rel="noreferrer noopener"
-              aria-label="BitapTech on Facebook"
-              className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
-            >
-              <Facebook className="h-4.5 w-4.5" />
-            </a>
-            <a
-              href={`mailto:${SITE.email}`}
-              aria-label="Email BitapTech"
-              className="h-10 w-10 grid place-items-center rounded-xl border border-border/60 bg-secondary/20 dark:bg-white/5 hover:bg-accent hover:border-primary/45 hover:text-primary transition-all duration-300"
-            >
-              <Mail className="h-4.5 w-4.5" />
-            </a>
-          </div>
         </div>
 
-        <div>
+        <div className="col-span-1">
           <div className="text-sm font-semibold mb-4 tracking-tight">Our Products</div>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
@@ -109,7 +67,7 @@ export function Footer() {
           </ul>
         </div>
 
-        <div>
+        <div className="col-span-1">
           <div className="text-sm font-semibold mb-4 tracking-tight">Legal & Support</div>
           <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
@@ -138,33 +96,62 @@ export function Footer() {
                 Refund Policy
               </Link>
             </li>
+          </ul>
+        </div>
+
+        <div className="col-span-1">
+          <div className="text-sm font-semibold mb-4 tracking-tight">Contact Us</div>
+          <ul className="space-y-3 text-sm text-muted-foreground">
             <li>
               <a
-                href="mailto:info@bitaptech.com"
-                className="hover:text-foreground transition-colors duration-200"
+                href={`mailto:${SITE.email}`}
+                className="flex items-center gap-2 hover:text-foreground transition-colors duration-200"
               >
-                info@bitaptech.com
+                <Mail className="h-4 w-4 shrink-0" />
+                <span>Email Us</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.sameAs[0]}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center gap-2 hover:text-foreground transition-colors duration-200"
+              >
+                <Linkedin className="h-4 w-4 shrink-0" />
+                <span>LinkedIn</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.sameAs[1]}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center gap-2 hover:text-foreground transition-colors duration-200"
+              >
+                <Instagram className="h-4 w-4 shrink-0" />
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href={SITE.sameAs[2]}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="flex items-center gap-2 hover:text-foreground transition-colors duration-200"
+              >
+                <Facebook className="h-4 w-4 shrink-0" />
+                <span>Facebook</span>
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-border/40 relative z-10 text-xs text-muted-foreground py-5">
+      <div className="border-t border-border/40 relative z-10 text-xs text-muted-foreground py-3">
         <div className="mx-auto max-w-6xl px-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {SITE.business.registeredName} (BitapTech). All Rights
-            Reserved.
-          </p>
-          <p className="text-[11px] leading-relaxed sm:text-right">
-            Registered office: {SITE.business.address}
-            <br className="hidden sm:block" />{" "}
-            <span className="sm:ml-0">
-              Phone: {SITE.business.phone} · Email:{" "}
-              <a href={`mailto:${SITE.email}`} className="hover:text-foreground">
-                {SITE.email}
-              </a>
-            </span>
+            © {new Date().getFullYear()} BitapTech. All Rights Reserved.
           </p>
         </div>
       </div>

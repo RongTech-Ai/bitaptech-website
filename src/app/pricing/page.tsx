@@ -67,18 +67,17 @@ export default function PricingPage() {
       <section className="mx-auto max-w-6xl px-6 pt-12 pb-8 relative">
         <Reveal>
           <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-            Pricing
+            Pricing Plans
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight font-display leading-[1.1]">
-            Simple pricing,{" "}
+            Flexible plans scaled to{" "}
             <span className="text-gradient bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
-              in Indian Rupees
+              your campaign volume
             </span>
             .
           </h1>
           <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Transparent plans for the WpAI WhatsApp Business platform. All prices are in INR (₹) and
-            exclusive of 18% GST. No hidden fees — cancel anytime.
+            Transparent INR pricing for high-deliverability WhatsApp campaigns. Select between zero-tariff Web Sessions or our prepaid Meta Cloud API wallet, with zero hidden setup fees.
           </p>
         </Reveal>
       </section>
@@ -86,9 +85,12 @@ export default function PricingPage() {
       {/* Web Session Connect subscription plans */}
       <section className="mx-auto max-w-6xl px-6 py-8 relative">
         <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3.5 py-1 text-xs font-bold border border-emerald-500/20 mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-3.5 py-1 text-xs font-bold border border-emerald-500/20 mb-3">
             <Zap className="h-3.5 w-3.5" /> WpAI Web Session Connect — Subscription
           </div>
+          <p className="text-xs text-muted-foreground mb-6 max-w-xl leading-relaxed">
+            Sync your active phone number via standard QR codes. Send transactional invoices, PDF receipts, and media attachments with <strong>zero Meta conversation fees</strong>.
+          </p>
         </Reveal>
         <div className="grid md:grid-cols-3 gap-6">
           {webPlans.map((plan, i) => (
@@ -146,22 +148,19 @@ export default function PricingPage() {
                   <Cloud className="h-3.5 w-3.5" /> WpAI Official Cloud API — Prepaid Wallet
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold font-display">
-                  Pay only for what you send
+                  Direct Meta pricing, zero markup
                 </h2>
-                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-                  The Official Meta Cloud API platform runs on a prepaid wallet. Recharge in ₹, and
-                  message charges are metered per conversation based on Meta&apos;s published rates
-                  and the destination country and category. A flat platform fee applies for account
-                  management and support.
+                <p className="mt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  For high-volume marketing broadcasts, CRM triggers, and multi-agent support teams. Leverage official Meta routing nodes with verified green checkmarks. Billed directly per conversation at Meta's baseline rates with no hidden markups.
                 </p>
                 <ul className="mt-6 space-y-3">
                   {[
-                    "Platform fee: ₹999 / month (includes onboarding & support)",
-                    "Messaging billed at Meta conversation rates, deducted from wallet",
-                    "Minimum wallet recharge: ₹1,000",
-                    "GST (18%) applied on platform fee and recharges as applicable",
+                    "Flat Platform Access: ₹999 / month (onboarding configuration included)",
+                    "Direct-to-Meta billing: Billed per message from your prepaid wallet",
+                    "Transparent wallet recharges: Starting at ₹1,000 minimal balance",
+                    "100% compliant: Indian business GST invoicing provided at checkout",
                   ].map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                    <li key={f} className="flex items-start gap-2.5 text-xs sm:text-sm text-muted-foreground">
                       <Check className="h-4 w-4 text-indigo-500 shrink-0 mt-0.5" />
                       <span>{f}</span>
                     </li>

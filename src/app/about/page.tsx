@@ -17,19 +17,17 @@ export default function AboutPage() {
       <section className="mx-auto max-w-6xl px-6 pt-12 pb-16 relative">
         <Reveal>
           <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-            About
+            About BitapTech
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl font-display leading-[1.1]">
-            We build software that{" "}
+            Bridging customer conversations with{"  "}
             <span className="text-gradient bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-              helps businesses grow
+              enterprise automation
             </span>
             .
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            BitapTech is an Indian software company focused on building innovative SaaS products and
-            AI-powered business solutions. We help teams automate, scale and deliver better customer
-            experiences.
+            BitapTech is an Indian software company built on communication infrastructure. We design API pipelines, session endpoints, and bespoke system integrations that make customer outreach fast, reliable, and highly cost-effective.
           </p>
         </Reveal>
       </section>
@@ -42,8 +40,7 @@ export default function AboutPage() {
             </div>
             <h2 className="mt-5 text-2xl font-bold font-display">Our Mission</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Build simple yet powerful software that helps businesses automate, grow and scale —
-              without complexity or friction.
+              To supply businesses with high-volume, lightweight messaging channels that eliminate outreach friction and reduce notification costs by up to 80%.
             </p>
           </div>
         </Reveal>
@@ -54,8 +51,7 @@ export default function AboutPage() {
             </div>
             <h2 className="mt-5 text-2xl font-bold font-display">Our Vision</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              An AI-native future where every business — small or large — has access to
-              enterprise-grade automation and intelligence.
+              To democratize business automation, giving small to mid-sized teams access to high-delivery carrier pipes, verified WhatsApp accounts, and smart workflows.
             </p>
           </div>
         </Reveal>
@@ -95,11 +91,10 @@ export default function AboutPage() {
             <Users className="h-5.5 w-5.5 text-primary" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight max-w-2xl font-display leading-tight">
-            A small team obsessed with product quality.
+            An engineering-first team focused on setup & integration.
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-            We work in tight, senior teams — designers and engineers who care about the details that
-            make products feel great to use.
+            We don't just sell software licenses. Our solution engineers coordinate with your team to setup direct API lines, link WhatsApp QR sessions, configure CRM databases, and manage TRAI compliance parameters to ensure high delivery.
           </p>
         </div>
       </section>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Cloud, Zap, MessageSquare } from "lucide-react";
+import { Menu, X, ChevronDown, Cloud, Zap, MessageSquare, Globe } from "lucide-react";
 
 const links = [
   { to: "/", label: "Home" },
@@ -45,17 +45,15 @@ export function Nav() {
         }`}
       >
         <div className="flex items-center justify-between h-14">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="bg-white border border-border/70 shadow-sm rounded-xl flex items-center justify-center h-11 w-44 overflow-hidden relative transition-all duration-300 hover:border-primary/20">
-              <Image
-                src="/assets/logo-horizontal.jpg"
-                alt="BitapTech Logo"
-                width={240}
-                height={54}
-                priority
-                className="absolute inset-0 h-full w-full object-contain scale-[1.6] mix-blend-multiply"
-              />
-            </div>
+          <Link href="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+            <Image
+              src="/assets/logo-horizontal.png"
+              alt="BitapTech Logo"
+              width={200}
+              height={87}
+              priority
+              className="h-12 sm:h-14 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1.5 bg-secondary/20 dark:bg-white/5 p-1 rounded-xl border border-border/30">
@@ -69,7 +67,8 @@ export function Nav() {
                     onMouseEnter={() => setDropdownOpen(true)}
                     onMouseLeave={() => setDropdownOpen(false)}
                   >
-                    <button
+                    <Link
+                      href="/products"
                       className={`px-4 py-1.5 text-sm font-medium rounded-lg transition-all duration-300 flex items-center gap-1 cursor-pointer ${
                         pathname.startsWith("/products")
                           ? "bg-background text-foreground shadow-sm border border-border/40"
@@ -80,7 +79,7 @@ export function Nav() {
                       <ChevronDown
                         className={`h-3.5 w-3.5 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
                       />
-                    </button>
+                    </Link>
 
                     {/* Hover Dropdown Menu */}
                     <div
@@ -208,6 +207,13 @@ export function Nav() {
                     </button>
                     {mobileProductsOpen && (
                       <div className="pl-6 flex flex-col gap-1.5 mt-1 border-l border-border/40 ml-4 py-1">
+                        <Link
+                          href="/products"
+                          onClick={() => setOpen(false)}
+                          className="flex items-center gap-2 py-2 text-xs font-bold text-primary hover:text-indigo-600 transition-colors"
+                        >
+                          <Globe className="h-4 w-4 text-primary" /> View All Products
+                        </Link>
                         <a
                           href="https://wpai.co.in"
                           target="_blank"

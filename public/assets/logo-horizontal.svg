@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 90" width="100%" height="100%">
+  <defs>
+    <!-- Gradients matching the logo image -->
+    <linearGradient id="bGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2575fc" />
+      <stop offset="100%" stop-color="#1a365d" />
+    </linearGradient>
+    <linearGradient id="tGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00d2ff" />
+      <stop offset="100%" stop-color="#0066ff" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10, 5)">
+    <!-- Symbol 'bt' -->
+    <g transform="scale(0.85)">
+      <!-- The 'b' character shape -->
+      <path d="M 16 10 C 16 5 20 1 25 1 C 30 1 34 5 34 10 L 34 32 C 38 27 45 24 53 24 C 67 24 78 35 78 49 C 78 63 67 74 53 74 C 45 74 38 71 34 66 L 34 68 C 34 73 30 77 25 77 C 20 77 16 73 16 68 Z" fill="url(#bGrad)" />
+      
+      <!-- Robot Speech Bubble inside the bowl of 'b' -->
+      <!-- Center at x=53, y=49 -->
+      <g transform="translate(53, 49)">
+        <!-- Speech Bubble Base -->
+        <rect x="-14" y="-10" width="28" height="20" rx="9" fill="#ffffff" />
+        <!-- Tail/pointer of bubble -->
+        <path d="M -8 8 L -11 13 L -5 9 Z" fill="#ffffff" />
+        <!-- Eyes -->
+        <circle cx="-5" cy="0" r="2.2" fill="#1a365d" />
+        <circle cx="5" cy="0" r="2.2" fill="#1a365d" />
+        <!-- Antenna -->
+        <line x1="0" y1="-10" x2="0" y2="-16" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+        <circle cx="0" cy="-17" r="1.8" fill="#ffffff" />
+      </g>
+      
+      <!-- The 't' character shape -->
+      <!-- Crossbar -->
+      <path d="M 58 31 C 58 27 62 23 66 23 L 86 23 C 91 23 95 27 95 31 C 95 35 91 39 86 39 L 66 39 C 62 39 58 35 58 31 Z" fill="url(#tGrad)" />
+      <!-- Vertical Stem curving right at bottom -->
+      <path d="M 68 25 C 68 20 72 16 77 16 C 82 16 86 20 86 25 L 86 54 C 86 63 92 69 101 69 C 105 69 109 73 109 78 C 109 83 105 87 101 87 C 83 87 68 72 68 54 Z" fill="url(#tGrad)" />
+    </g>
+
+    <!-- Text "BITAPTECH" -->
+    <g transform="translate(108, 48)">
+      <text font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="34px" letter-spacing="1px">
+        <tspan fill="#060b26">BITAP</tspan>
+        <tspan fill="#00a3ff">TECH</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

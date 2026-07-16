@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Globe, MessageSquare, Phone, MapPin } from "lucide-react";
+import { Mail, MessageSquare } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { Reveal } from "@/components/site/Reveal";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -18,18 +18,17 @@ export default function ContactPage() {
       <section className="mx-auto max-w-6xl px-6 pt-12 pb-16 relative">
         <Reveal>
           <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-            Contact
+            Solutions Consultation
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl font-display leading-[1.1]">
-            Let's build something{" "}
+            Let's scale your{" "}
             <span className="text-gradient bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-              amazing together
+              communications pipeline
             </span>
             .
           </h1>
           <p className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            Tell us about your idea. Whether it's an AI product, an automation platform or a custom
-            SaaS — we'd love to hear about it.
+            Talk directly with our solution engineers. We'll map out the fastest paths to sync your CRM with WhatsApp sessions, config official API routes, or set up carrier fallbacks.
           </p>
         </Reveal>
 
@@ -49,51 +48,7 @@ export default function ContactPage() {
                 <div className="font-semibold text-foreground mt-1">{SITE.email}</div>
               </div>
             </a>
-            <a
-              href={SITE.url}
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-start gap-4 rounded-2xl border border-border/50 p-6 bg-card hover:shadow-elegant hover:border-primary/20 transition-all duration-300"
-            >
-              <div className="h-10 w-10 rounded-xl grid place-items-center bg-gradient-primary text-white shadow-glow shrink-0">
-                <Globe className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                  Website
-                </div>
-                <div className="font-semibold text-foreground mt-1">{SITE.url.replace(/^https?:\/\//, "")}</div>
-              </div>
-            </a>
-            <a
-              href={`tel:${SITE.business.phone.replace(/\s+/g, "")}`}
-              className="flex items-start gap-4 rounded-2xl border border-border/50 p-6 bg-card hover:shadow-elegant hover:border-primary/20 transition-all duration-300"
-            >
-              <div className="h-10 w-10 rounded-xl grid place-items-center bg-gradient-primary text-white shadow-glow shrink-0">
-                <Phone className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                  Phone
-                </div>
-                <div className="font-semibold text-foreground mt-1">{SITE.business.phone}</div>
-                <div className="text-xs text-muted-foreground mt-0.5">{SITE.business.hours}</div>
-              </div>
-            </a>
-            <div className="flex items-start gap-4 rounded-2xl border border-border/50 p-6 bg-card">
-              <div className="h-10 w-10 rounded-xl grid place-items-center bg-gradient-primary text-white shadow-glow shrink-0">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
-                  Registered office
-                </div>
-                <div className="font-semibold text-foreground mt-1">
-                  {SITE.business.registeredName}
-                </div>
-                <div className="text-xs text-muted-foreground mt-0.5">{SITE.business.address}</div>
-              </div>
-            </div>
+
             <div className="flex items-start gap-4 rounded-2xl glass p-6 border border-border/50">
               <div className="h-10 w-10 rounded-xl grid place-items-center bg-gradient-primary text-white shadow-glow shrink-0">
                 <MessageSquare className="h-5 w-5" />

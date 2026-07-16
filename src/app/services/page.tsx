@@ -13,33 +13,33 @@ export const metadata: Metadata = {
 const services = [
   {
     icon: Code2,
-    title: "Bespoke Enterprise Software",
-    desc: "Custom platforms, client portals, and administrative dashboards designed around your operations and internal teams.",
+    title: "Bespoke Portals & Dashboards",
+    desc: "Bespoke client portals and internal dashboards built to streamline communications, manage team workloads, and monitor outreach metrics.",
   },
   {
     icon: Bot,
-    title: "AI & Conversational Integrations",
-    desc: "Integrating advanced LLM agents, automated message responders, and RAG pipelines into your customer touchpoints.",
+    title: "AI Support & Answering Bots",
+    desc: "Automating customer chats and training custom AI agents to resolve support inquiries instantly, 24/7, inside WhatsApp.",
   },
   {
     icon: Layers,
-    title: "Messaging Middleware & Bridges",
-    desc: "Custom API pipelines connecting WpAI endpoints with your internal CRM systems like HubSpot, Zoho, or proprietary databases.",
+    title: "CRM Sync Middleware",
+    desc: "Stop copy-pasting customer details. We link messaging endpoints directly to HubSpot, Zoho, Salesforce, or custom databases.",
   },
   {
     icon: Cloud,
-    title: "Cloud Infrastructure & Scale",
-    desc: "Secure, load-balanced container setups and serverless pipelines deployed across Cloudflare, AWS, or Azure.",
+    title: "High-Availability Broadcasts",
+    desc: "Configuring load-balanced messaging containers and cloud failover routes that handle over 100,000 notifications daily.",
   },
   {
     icon: Globe,
-    title: "High-Performance Web Apps",
-    desc: "Blazing-fast web portals, analytics boards, and workflow interfaces crafted with React, Next.js, and TypeScript.",
+    title: "Custom Billing Automations",
+    desc: "Synchronizing accounting software (Tally, Zoho Books) to automatically trigger billing updates and PDF invoices to clients.",
   },
   {
     icon: Cpu,
-    title: "Workflow Automations",
-    desc: "Observe and automate manual data syncs, notifications, and alerts between disjointed internal programs.",
+    title: "Workflow Operations",
+    desc: "Mapping internal data updates to messaging endpoints so your team is automatically notified when orders are placed or shipped.",
   },
 ];
 
@@ -53,19 +53,17 @@ export default function ServicesPage() {
       <section className="mx-auto max-w-7xl px-6 pt-8 pb-10 relative">
         <Reveal>
           <div className="text-sm font-semibold tracking-wider text-primary uppercase mb-2">
-            Custom Services
+            Bespoke Engineering
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight font-display leading-[1.1]">
-            Engineering custom extensions{" "}
+            Custom messaging integrations{" "}
             <span className="text-gradient bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
-              for your workflows
+              built for your business CRM
             </span>
             .
           </h1>
           <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            We don't just supply a communications SaaS. Our senior engineering division designs,
-            integrates, and deploys custom software layers to bridge WpAI with your internal
-            infrastructure.
+            We don't just supply communications software. Our senior solutions division integrates, customizes, and deploys custom API synchronization layers to connect your databases and CRM platforms with direct SMS and WhatsApp gateways.
           </p>
         </Reveal>
       </section>

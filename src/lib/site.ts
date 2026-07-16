@@ -24,7 +24,7 @@ export const SITE = {
   },
   description:
     "BitapTech builds AI-powered SaaS products, automation platforms and custom software that help businesses scale, automate and grow.",
-  logo: `${SITE_URL}/assets/logo-square.jpg`,
+  logo: `${SITE_URL}/assets/logo-square.png`,
   ogImage: `${SITE_URL}/opengraph-image`,
   sameAs: [
     process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://www.linkedin.com/company/bitaptech2026",
