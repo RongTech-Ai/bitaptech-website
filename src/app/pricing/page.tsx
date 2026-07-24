@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { SITE, SITE_URL } from "@/lib/site";
 import { ArrowRight, Check, Cloud, Zap, Wallet } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -70,9 +70,50 @@ const webPlans = [
   },
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Pricing",
+          item: `${SITE_URL}/pricing`,
+        },
+      ],
+    },
+    {
+      "@type": "Product",
+      name: "WpAI Web Session Connect",
+      description:
+        "BitapTech pricing in INR for the WpAI WhatsApp Business platform — Web Session Connect subscriptions and Official Cloud API prepaid wallet plans.",
+      brand: { "@id": `${SITE_URL}/#organization` },
+      offers: webPlans.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        price: plan.price.replace("₹", "").replace(",", ""),
+        priceCurrency: "INR",
+        url: `${SITE_URL}/pricing`,
+      })),
+    },
+  ],
+};
+
 export default function PricingPage() {
   return (
     <div className="relative overflow-hidden w-full bg-background text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
       {/* Hero */}

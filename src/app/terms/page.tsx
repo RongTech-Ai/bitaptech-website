@@ -7,6 +7,17 @@ export const metadata: Metadata = {
     "The terms that govern your use of BitapTech's website, products, and WhatsApp Business messaging platform.",
   robots: { index: true, follow: true },
   alternates: { canonical: "/terms" },
+  openGraph: {
+    title: "Terms of Service — BitapTech",
+    description:
+      "The terms that govern your use of BitapTech's website, products, and WhatsApp Business messaging platform.",
+    url: "/terms",
+  },
+  twitter: {
+    title: "Terms of Service — BitapTech",
+    description:
+      "The terms that govern your use of BitapTech's website, products, and WhatsApp Business messaging platform.",
+  },
 };
 
 const LAST_UPDATED = "14 July 2026";

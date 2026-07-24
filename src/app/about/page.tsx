@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CheckCircle2, Target, Rocket, Users } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -20,9 +21,45 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: SITE_URL,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "About",
+          item: `${SITE_URL}/about`,
+        },
+      ],
+    },
+    {
+      "@type": "AboutPage",
+      url: `${SITE_URL}/about`,
+      name: "About BitapTech",
+      description:
+        "BitapTech is an Indian software company building AI-powered SaaS products and business automation platforms.",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <div className="relative overflow-hidden w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
 
