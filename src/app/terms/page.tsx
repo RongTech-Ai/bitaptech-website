@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "The terms that govern your use of BitapTech's website, products, and WhatsApp Business messaging platform.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/terms" },
 };
 
 const LAST_UPDATED = "14 July 2026";

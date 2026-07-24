@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   description:
     "BitapTech pricing in INR for the WpAI WhatsApp Business platform — Web Session Connect subscriptions and Official Cloud API prepaid wallet plans.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Pricing — BitapTech",
+    description:
+      "BitapTech pricing in INR for the WpAI WhatsApp Business platform — Web Session Connect subscriptions and Official Cloud API prepaid wallet plans.",
+    url: "/pricing",
+  },
+  twitter: {
+    title: "Pricing — BitapTech",
+    description:
+      "BitapTech pricing in INR for the WpAI WhatsApp Business platform — Web Session Connect subscriptions and Official Cloud API prepaid wallet plans.",
+  },
 };
 
 // NOTE: Prices are in INR (₹) and exclusive of 18% GST unless stated.

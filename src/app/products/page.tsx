@@ -19,6 +19,18 @@ export const metadata: Metadata = {
   title: "Products & Messaging Solutions",
   description:
     "Enterprise messaging gateways, WhatsApp Cloud API, session-based Web Connect, high TPS SMPP servers, and RCS templates.",
+  alternates: { canonical: "/products" },
+  openGraph: {
+    title: "Products & Messaging Solutions — BitapTech",
+    description:
+      "Enterprise messaging gateways, WhatsApp Cloud API, session-based Web Connect, high TPS SMPP servers, and RCS templates.",
+    url: "/products",
+  },
+  twitter: {
+    title: "Products & Messaging Solutions — BitapTech",
+    description:
+      "Enterprise messaging gateways, WhatsApp Cloud API, session-based Web Connect, high TPS SMPP servers, and RCS templates.",
+  },
 };
 
 const comparisonData = [

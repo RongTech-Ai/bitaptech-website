@@ -98,6 +98,27 @@ const jsonLd = {
       offers: { "@type": "Offer", priceCurrency: "INR" },
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
+    {
+      "@type": "SoftwareApplication",
+      name: PRODUCTS.scannerOne.name,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: PRODUCTS.scannerOne.url,
+      description:
+        "WpAI Web Session Connect automates WhatsApp messaging over standard device connections for lead capture and customer engagement.",
+      offers: { "@type": "Offer", priceCurrency: "INR" },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: PRODUCTS.omiLink.name,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: PRODUCTS.omiLink.url,
+      description: PRODUCTS.omiLink.tagline,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
   ],
 };
 

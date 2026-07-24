@@ -7,6 +7,16 @@ import { ContactForm } from "@/components/site/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with BitapTech. Let's build something amazing together.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact BitapTech",
+    description: "Get in touch with BitapTech. Let's build something amazing together.",
+    url: "/contact",
+  },
+  twitter: {
+    title: "Contact BitapTech",
+    description: "Get in touch with BitapTech. Let's build something amazing together.",
+  },
 };
 
 export default function ContactPage() {

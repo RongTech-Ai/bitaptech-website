@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: "Enterprise Custom Engineering & Services",
   description:
     "Custom software development, AI integrations, messaging middleware, cloud architectures, and dashboard services by BitapTech.",
+  alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Enterprise Custom Engineering & Services — BitapTech",
+    description:
+      "Custom software development, AI integrations, messaging middleware, cloud architectures, and dashboard services by BitapTech.",
+    url: "/services",
+  },
+  twitter: {
+    title: "Enterprise Custom Engineering & Services — BitapTech",
+    description:
+      "Custom software development, AI integrations, messaging middleware, cloud architectures, and dashboard services by BitapTech.",
+  },
 };
 
 const services = [

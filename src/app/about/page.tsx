@@ -6,6 +6,18 @@ export const metadata: Metadata = {
   title: "About",
   description:
     "BitapTech is an Indian software company building AI-powered SaaS products and business automation platforms.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About BitapTech",
+    description:
+      "BitapTech is an Indian software company building AI-powered SaaS products and business automation platforms.",
+    url: "/about",
+  },
+  twitter: {
+    title: "About BitapTech",
+    description:
+      "BitapTech is an Indian software company building AI-powered SaaS products and business automation platforms.",
+  },
 };
 
 export default function AboutPage() {

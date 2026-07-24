@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "BitapTech's refund and cancellation policy for wallet recharges, message charges, and subscriptions on our WhatsApp Business platform.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/refund" },
 };
 
 const LAST_UPDATED = "14 July 2026";

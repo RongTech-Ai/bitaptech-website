@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/about",
     "/contact",
+    "/book-demo",
     "/privacy",
     "/terms",
     "/refund",
@@ -22,6 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency:
       route === "" || route === "/products" || route === "/services" ? "weekly" : "monthly",
-    priority: route === "" ? 1.0 : route === "/products" || route === "/services" ? 0.9 : 0.7,
+    priority:
+      route === ""
+        ? 1.0
+        : route === "/products" || route === "/services" || route === "/book-demo"
+          ? 0.9
+          : 0.7,
   }));
 }

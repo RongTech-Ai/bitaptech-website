@@ -79,6 +79,19 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/about" className="hover:text-foreground transition-colors duration-200">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="hover:text-foreground transition-colors duration-200"
+              >
+                Contact
+              </Link>
+            </li>
+            <li>
               <Link
                 href="/privacy"
                 className="hover:text-foreground transition-colors duration-200"

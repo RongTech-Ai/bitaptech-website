@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "How BitapTech collects, uses, shares and protects your data across our products, including our WhatsApp Business messaging platform built on Meta's official Cloud API.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/privacy" },
 };
 
 const LAST_UPDATED = "14 July 2026";

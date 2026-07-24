@@ -53,4 +53,9 @@ export const PRODUCTS = {
     name: "WpAI Web Session Connect",
     url: "https://inst.wpai.co.in",
   },
+  omiLink: {
+    name: "OMI Link",
+    url: "https://short.bitaptech.com",
+    tagline: "Free URL shortener, QR code generator, and link analytics",
+  },
 } as const;
